@@ -5,7 +5,7 @@ export interface FooterProps {
    className?: string;
 }
 
-export const Footer = styled.footer`
+export const Footer = styled.footer<FooterProps>`
    display: flex;
    flex-direction: column;
    color: ${color.white};

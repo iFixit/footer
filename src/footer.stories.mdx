@@ -1,10 +1,126 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { Footer } from './Footer';
+import { FooterSection } from './FooterSection';
+import { Divider, DividerOrientation } from './Divider';
+import { FooterLink } from './FooterLink';
+import { Stack } from './Stack';
+import { Grid } from './Grid';
+import { FooterPartner } from './FooterPartner';
+import { FooterList, FooterListItem, FooterListIcon } from './FooterList';
+import { Icon } from './Icon';
+import styled from 'styled-components';
+import { fontFamily, fontWeight, space } from '@core-ds/primitives';
 
 <Meta title="Footer" />
 
+export const DemoPage = styled.div`
+   display: flex;
+   flex-direction: column;
+   font-family: ${fontFamily.inter};
+`;
+
 # iFixit footer
 
-<Footer>
-   <p>Hello from footer</p>
-</Footer>
+A set of components to compose iFixit.com and Shopify store footer.
+
+<Canvas>
+   <Story name="Default footer">
+      {(args) => (
+         <DemoPage>
+            <Footer>
+               <FooterSection padding={space[7]}>
+                  <Stack direction="row" justify="space-between">
+                     <FooterList spacing={space[2]} paddingY={space[1]}>
+                        <FooterListItem>
+                           <FooterLink href="#" fontWeight={fontWeight.bold}>
+                              About us
+                           </FooterLink>
+                        </FooterListItem>
+                        <FooterListItem>
+                           <FooterLink href="#" fontWeight={fontWeight.bold}>
+                              Customer support
+                           </FooterLink>
+                        </FooterListItem>
+                     </FooterList>
+                     <FooterList spacing={space[2]} paddingY={space[1]}>
+                        <FooterListItem>
+                           <FooterLink href="#" fontWeight={fontWeight.bold}>
+                              Press
+                           </FooterLink>
+                        </FooterListItem>
+                        <FooterListItem>
+                           <FooterLink href="#" fontWeight={fontWeight.bold}>
+                              News
+                           </FooterLink>
+                        </FooterListItem>
+                     </FooterList>
+                     <FooterList spacing={space[2]} paddingY={space[1]}>
+                        <FooterListItem>
+                           <FooterListIcon
+                              alt="Facebook logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbe9673a45e28ed13ef_facebook.svg"
+                           />
+                           <FooterLink href="#" fontWeight={fontWeight.bold}>
+                              Facebook
+                           </FooterLink>
+                        </FooterListItem>
+                        <FooterListItem>
+                           <FooterListIcon
+                              alt="Facebook logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbef76e380c31ad25f0_twitter.svg"
+                           />
+                           <FooterLink href="#" fontWeight={fontWeight.bold}>
+                              Twitter
+                           </FooterLink>
+                        </FooterListItem>
+                     </FooterList>
+                     <Grid templateColumns="repeat(3, 1fr)" gap={space[4]}>
+                        <FooterLink href="#">
+                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                        </FooterLink>
+                        <FooterLink href="#">
+                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                        </FooterLink>
+                        <FooterLink href="#">
+                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                        </FooterLink>
+                        <FooterLink href="#">
+                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                        </FooterLink>
+                        <FooterLink href="#">
+                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                        </FooterLink>
+                        <FooterLink href="#">
+                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                        </FooterLink>
+                     </Grid>
+                  </Stack>
+               </FooterSection>
+               <Divider />
+               <FooterSection paddingX={space[7]} paddingY={space[5]}>
+                  <Stack justify="space-between">
+                     <Stack spacing={space[8]}>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           <Stack spacing={space[2]} align="center">
+                              <span>Help translate</span>
+                              <Icon
+                                 alt="Translate icon"
+                                 source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f68f6fab1ac0b141961dbab_globe.svg"
+                              />
+                           </Stack>
+                        </FooterLink>
+                     </Stack>
+                     <Stack align="stretch" spacing={space[4]}>
+                        <FooterLink href="#">Licensed under Creative Commons</FooterLink>
+                        <Divider orientation={DividerOrientation.Vertical} />
+                        <FooterLink href="#">Privacy</FooterLink>
+                        <Divider orientation={DividerOrientation.Vertical} />
+                        <FooterLink href="#">Legal</FooterLink>
+                     </Stack>
+                  </Stack>
+               </FooterSection>
+            </Footer>
+         </DemoPage>
+      )}
+   </Story>
+</Canvas>
