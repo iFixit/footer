@@ -1,28 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { LayoutProps } from '../types';
+import { layout } from '../utils';
 
-export interface FooterSectionProps {
+export type FooterSectionProps = {
    className?: string;
-   padding?: string;
-   paddingX?: string;
-   paddingY?: string;
-}
+} & LayoutProps;
 
 export const FooterSection = styled.div<FooterSectionProps>`
-   ${(props) =>
-      props.padding != null &&
-      css`
-         padding: ${props.padding};
-      `};
-   ${(props) =>
-      props.paddingX != null &&
-      css`
-         padding-left: ${props.paddingX};
-         padding-right: ${props.paddingX};
-      `};
-   ${(props) =>
-      props.paddingY != null &&
-      css`
-         padding-top: ${props.paddingY};
-         padding-bottom: ${props.paddingY};
-      `};
+   ${layout};
 `;

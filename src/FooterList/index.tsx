@@ -1,6 +1,8 @@
 import { space } from '@core-ds/primitives';
 import * as React from 'react';
 import styled, { css } from 'styled-components';
+import { LayoutProps } from '../types';
+import { layout } from '../utils';
 
 export interface FooterListIconProps {
    className?: string;
@@ -31,18 +33,17 @@ export interface FooterListItemProps {
 
 export const FooterListItem = styled.li<FooterListItemProps>`
    display: flex;
+   align-items: center;
+   padding-top: ${space[1]};
+   padding-bottom: ${space[1]};
    & > :not(:first-child) {
       margin-left: ${space[2]};
    }
 `;
 
-export interface FooterListProps {
+export type FooterListProps = {
    className?: string;
-   spacing?: string;
-   padding?: string;
-   paddingX?: string;
-   paddingY?: string;
-}
+} & LayoutProps;
 
 export const FooterList = styled.ul
    .withConfig({
@@ -55,28 +56,12 @@ export const FooterList = styled.ul
    margin: 0;
    padding: 0;
    list-style: none;
+   ${layout};
    ${(props) =>
       props.spacing != null &&
       css`
          & ${FooterListItem}:not(:first-child) {
             margin-top: ${props.spacing};
          }
-      `}
-   ${(props) =>
-      props.padding != null &&
-      css`
-         padding: ${props.padding};
-      `};
-   ${(props) =>
-      props.paddingX != null &&
-      css`
-         padding-left: ${props.paddingX};
-         padding-right: ${props.paddingX};
-      `};
-   ${(props) =>
-      props.paddingY != null &&
-      css`
-         padding-top: ${props.paddingY};
-         padding-bottom: ${props.paddingY};
       `};
 `;

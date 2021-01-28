@@ -4,12 +4,12 @@ import { FooterSection } from './FooterSection';
 import { Divider, DividerOrientation } from './Divider';
 import { FooterLink } from './FooterLink';
 import { Stack } from './Stack';
-import { Grid } from './Grid';
+import { Grid, GridItem } from './Grid';
 import { FooterPartner } from './FooterPartner';
 import { FooterList, FooterListItem, FooterListIcon } from './FooterList';
 import { Icon } from './Icon';
 import styled from 'styled-components';
-import { fontFamily, fontWeight, space } from '@core-ds/primitives';
+import { fontFamily, fontWeight, space, color } from '@core-ds/primitives';
 
 <Meta title="Footer" />
 
@@ -28,52 +28,91 @@ A set of components to compose iFixit.com and Shopify store footer.
       {(args) => (
          <DemoPage>
             <Footer>
-               <FooterSection padding={space[7]}>
-                  <Stack direction="row" justify="space-between">
-                     <FooterList spacing={space[2]} paddingY={space[1]}>
-                        <FooterListItem>
-                           <FooterLink href="#" fontWeight={fontWeight.bold}>
-                              About us
-                           </FooterLink>
-                        </FooterListItem>
-                        <FooterListItem>
-                           <FooterLink href="#" fontWeight={fontWeight.bold}>
-                              Customer support
-                           </FooterLink>
-                        </FooterListItem>
-                     </FooterList>
-                     <FooterList spacing={space[2]} paddingY={space[1]}>
-                        <FooterListItem>
-                           <FooterLink href="#" fontWeight={fontWeight.bold}>
-                              Press
-                           </FooterLink>
-                        </FooterListItem>
-                        <FooterListItem>
-                           <FooterLink href="#" fontWeight={fontWeight.bold}>
-                              News
-                           </FooterLink>
-                        </FooterListItem>
-                     </FooterList>
-                     <FooterList spacing={space[2]} paddingY={space[1]}>
-                        <FooterListItem>
-                           <FooterListIcon
-                              alt="Facebook logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbe9673a45e28ed13ef_facebook.svg"
-                           />
-                           <FooterLink href="#" fontWeight={fontWeight.bold}>
-                              Facebook
-                           </FooterLink>
-                        </FooterListItem>
-                        <FooterListItem>
-                           <FooterListIcon
-                              alt="Facebook logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbef76e380c31ad25f0_twitter.svg"
-                           />
-                           <FooterLink href="#" fontWeight={fontWeight.bold}>
-                              Twitter
-                           </FooterLink>
-                        </FooterListItem>
-                     </FooterList>
+               <Grid
+                  templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)', lg: 'repeat(4, 1fr)' }}
+                  gap={space[4]}
+                  paddingX={{
+                     base: space[5],
+                     sm: space[7],
+                  }}
+                  paddingY={space[7]}
+               >
+                  <FooterList
+                     borderBottom={{
+                        base: `1px solid ${color.gray8}`,
+                        sm: 'none',
+                     }}
+                     paddingBottom={{
+                        base: space[4],
+                        sm: '0',
+                     }}
+                  >
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           About us
+                        </FooterLink>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Customer support
+                        </FooterLink>
+                     </FooterListItem>
+                  </FooterList>
+                  <FooterList
+                     borderBottom={{
+                        base: `1px solid ${color.gray8}`,
+                        sm: 'none',
+                     }}
+                     paddingBottom={{
+                        base: space[4],
+                        sm: '0',
+                     }}
+                  >
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Press
+                        </FooterLink>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           News
+                        </FooterLink>
+                     </FooterListItem>
+                  </FooterList>
+                  <FooterList
+                     borderBottom={{
+                        base: `1px solid ${color.gray8}`,
+                        sm: 'none',
+                     }}
+                     paddingBottom={{
+                        base: space[4],
+                        sm: '0',
+                     }}
+                  >
+                     <FooterListItem>
+                        <FooterListIcon
+                           alt="Facebook logo"
+                           source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbe9673a45e28ed13ef_facebook.svg"
+                        />
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Facebook
+                        </FooterLink>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <FooterListIcon
+                           alt="Facebook logo"
+                           source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbef76e380c31ad25f0_twitter.svg"
+                        />
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Twitter
+                        </FooterLink>
+                     </FooterListItem>
+                  </FooterList>
+                  <GridItem
+                     columnEnd={{ sm: 'span 3', lg: 'auto' }}
+                     marginTop={{ base: space[6], lg: 'unset' }}
+                     justify="center"
+                  >
                      <Grid templateColumns="repeat(3, 1fr)" gap={space[4]}>
                         <FooterLink href="#">
                            <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
@@ -88,36 +127,40 @@ A set of components to compose iFixit.com and Shopify store footer.
                            <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
                         </FooterLink>
                         <FooterLink href="#">
-                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875565af2ab6da22d5134_logo-hermes.png" />
                         </FooterLink>
                         <FooterLink href="#">
                            <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
                         </FooterLink>
                      </Grid>
-                  </Stack>
-               </FooterSection>
+                  </GridItem>
+               </Grid>
                <Divider />
                <FooterSection paddingX={space[7]} paddingY={space[5]}>
-                  <Stack justify="space-between">
-                     <Stack spacing={space[8]}>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           <Stack spacing={space[2]} align="center">
-                              <span>Help translate</span>
-                              <Icon
-                                 alt="Translate icon"
-                                 source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f68f6fab1ac0b141961dbab_globe.svg"
-                              />
-                           </Stack>
-                        </FooterLink>
-                     </Stack>
-                     <Stack align="stretch" spacing={space[4]}>
-                        <FooterLink href="#">Licensed under Creative Commons</FooterLink>
-                        <Divider orientation={DividerOrientation.Vertical} />
-                        <FooterLink href="#">Privacy</FooterLink>
-                        <Divider orientation={DividerOrientation.Vertical} />
-                        <FooterLink href="#">Legal</FooterLink>
-                     </Stack>
-                  </Stack>
+                  <Grid templateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }} gap={space[4]}>
+                     <GridItem justify={{ base: 'center', lg: 'start' }}>
+                        <Stack spacing={space[8]}>
+                           <FooterLink href="#" fontWeight={fontWeight.bold}>
+                              <Stack spacing={space[2]} align="center">
+                                 <span>Help translate</span>
+                                 <Icon
+                                    alt="Translate icon"
+                                    source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f68f6fab1ac0b141961dbab_globe.svg"
+                                 />
+                              </Stack>
+                           </FooterLink>
+                        </Stack>
+                     </GridItem>
+                     <GridItem justify={{ base: 'center', lg: 'end' }}>
+                        <Stack align="stretch" spacing={space[4]}>
+                           <FooterLink href="#">Licensed under Creative Commons</FooterLink>
+                           <Divider orientation={DividerOrientation.Vertical} />
+                           <FooterLink href="#">Privacy</FooterLink>
+                           <Divider orientation={DividerOrientation.Vertical} />
+                           <FooterLink href="#">Legal</FooterLink>
+                        </Stack>
+                     </GridItem>
+                  </Grid>
                </FooterSection>
             </Footer>
          </DemoPage>
