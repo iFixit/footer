@@ -1,15 +1,17 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { Footer } from './Footer';
-import { FooterSection } from './FooterSection';
 import { Divider, DividerOrientation } from './Divider';
 import { FooterLink } from './FooterLink';
 import { Stack } from './Stack';
 import { Grid, GridItem } from './Grid';
+import { Popover, PopoverTrigger, PopoverContent } from './Popover';
 import { FooterPartner } from './FooterPartner';
 import { FooterList, FooterListItem, FooterListIcon } from './FooterList';
 import { Icon } from './Icon';
 import styled from 'styled-components';
 import { fontFamily, fontWeight, space, color } from '@core-ds/primitives';
+import { StoreDropdown } from '@ifixit/product-page-components';
+import stores from './stores.json';
 
 <Meta title="Footer" />
 
@@ -136,32 +138,46 @@ A set of components to compose iFixit.com and Shopify store footer.
                   </GridItem>
                </Grid>
                <Divider />
-               <FooterSection paddingX={space[7]} paddingY={space[5]}>
-                  <Grid templateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }} gap={space[4]}>
-                     <GridItem justify={{ base: 'center', lg: 'start' }}>
-                        <Stack spacing={space[8]}>
-                           <FooterLink href="#" fontWeight={fontWeight.bold}>
-                              <Stack spacing={space[2]} align="center">
-                                 <span>Help translate</span>
-                                 <Icon
-                                    alt="Translate icon"
-                                    source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f68f6fab1ac0b141961dbab_globe.svg"
-                                 />
-                              </Stack>
-                           </FooterLink>
-                        </Stack>
-                     </GridItem>
-                     <GridItem justify={{ base: 'center', lg: 'end' }}>
-                        <Stack align="stretch" spacing={space[4]}>
-                           <FooterLink href="#">Licensed under Creative Commons</FooterLink>
-                           <Divider orientation={DividerOrientation.Vertical} />
-                           <FooterLink href="#">Privacy</FooterLink>
-                           <Divider orientation={DividerOrientation.Vertical} />
-                           <FooterLink href="#">Legal</FooterLink>
-                        </Stack>
-                     </GridItem>
-                  </Grid>
-               </FooterSection>
+               <Grid
+                  templateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
+                  gap={space[4]}
+                  paddingX={space[7]}
+                  paddingY={space[5]}
+               >
+                  <GridItem justify={{ base: 'center', lg: 'start' }}>
+                     <Stack spacing={space[8]}>
+                        <Popover defaultIsOpen stores={stores}>
+                           <PopoverTrigger>
+                              <button>region</button>
+                           </PopoverTrigger>
+                           <PopoverContent>
+                              <StoreDropdown
+                                 stores={stores}
+                                 onClickStore={(store) => console.log(store)}
+                              />
+                           </PopoverContent>
+                        </Popover>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           <Stack spacing={space[2]} align="center">
+                              <span>Help translate</span>
+                              <Icon
+                                 alt="Translate icon"
+                                 source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f68f6fab1ac0b141961dbab_globe.svg"
+                              />
+                           </Stack>
+                        </FooterLink>
+                     </Stack>
+                  </GridItem>
+                  <GridItem justify={{ base: 'center', lg: 'end' }}>
+                     <Stack align="stretch" spacing={space[4]}>
+                        <FooterLink href="#">Licensed under Creative Commons</FooterLink>
+                        <Divider orientation={DividerOrientation.Vertical} />
+                        <FooterLink href="#">Privacy</FooterLink>
+                        <Divider orientation={DividerOrientation.Vertical} />
+                        <FooterLink href="#">Legal</FooterLink>
+                     </Stack>
+                  </GridItem>
+               </Grid>
             </Footer>
          </DemoPage>
       )}

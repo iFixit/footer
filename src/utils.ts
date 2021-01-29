@@ -18,17 +18,17 @@ export const responsiveProperty = (breakpointKey: string, name: string, property
          `}
    `;
 
-export const baseProperty = (name: string, propertyName: string) =>
+export const baseProperty = (propName: string, cssPropertyName: string) =>
    css<any>`
       ${(props) =>
-         isResponsiveStyle(props[name]) && props[name].base
+         isResponsiveStyle(props[propName]) && props[propName].base
             ? css`
-                 ${propertyName}: ${props[name].base};
+                 ${cssPropertyName}: ${props[propName].base};
               `
-            : props[name] == null
+            : props[propName] == null
             ? null
             : css`
-                 ${propertyName}: ${props[name]};
+                 ${cssPropertyName}: ${props[propName]};
               `}
    `;
 
