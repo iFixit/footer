@@ -10,7 +10,7 @@ import { FooterList, FooterListItem, FooterListIcon } from './FooterList';
 import { Icon } from './Icon';
 import styled from 'styled-components';
 import { fontFamily, fontWeight, space, color } from '@core-ds/primitives';
-import { StoreDropdown } from '@ifixit/product-page-components';
+// import { StoreDropdown } from '@ifixit/product-page-components';
 import stores from './stores.json';
 
 <Meta title="Footer" />
@@ -117,22 +117,40 @@ A set of components to compose iFixit.com and Shopify store footer.
                   >
                      <Grid templateColumns="repeat(3, 1fr)" gap={space[4]}>
                         <FooterLink href="#">
-                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                           <FooterPartner
+                              alt="Partner logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
+                           />
                         </FooterLink>
                         <FooterLink href="#">
-                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                           <FooterPartner
+                              alt="Partner logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
+                           />
                         </FooterLink>
                         <FooterLink href="#">
-                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                           <FooterPartner
+                              alt="Partner logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
+                           />
                         </FooterLink>
                         <FooterLink href="#">
-                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                           <FooterPartner
+                              alt="Partner logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
+                           />
                         </FooterLink>
                         <FooterLink href="#">
-                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875565af2ab6da22d5134_logo-hermes.png" />
+                           <FooterPartner
+                              alt="Partner logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875565af2ab6da22d5134_logo-hermes.png"
+                           />
                         </FooterLink>
                         <FooterLink href="#">
-                           <FooterPartner source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png" />
+                           <FooterPartner
+                              alt="Partner logo"
+                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
+                           />
                         </FooterLink>
                      </Grid>
                   </GridItem>
@@ -151,10 +169,7 @@ A set of components to compose iFixit.com and Shopify store footer.
                               <button>region</button>
                            </PopoverTrigger>
                            <PopoverContent>
-                              <StoreDropdown
-                                 stores={stores}
-                                 onClickStore={(store) => console.log(store)}
-                              />
+                              <p>content</p>
                            </PopoverContent>
                         </Popover>
                         <FooterLink href="#" fontWeight={fontWeight.bold}>

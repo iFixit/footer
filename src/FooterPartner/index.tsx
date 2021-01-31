@@ -5,12 +5,13 @@ import styled from 'styled-components';
 export interface FooterPartnerProps {
    className?: string;
    source: string;
+   alt: string;
 }
 
-export function FooterPartner({ className, source }: FooterPartnerProps) {
+export function FooterPartner({ className, source, alt }: FooterPartnerProps) {
    return (
       <Container className={className}>
-         <Logo src={source} />
+         <Logo src={source} alt={alt} />
       </Container>
    );
 }
