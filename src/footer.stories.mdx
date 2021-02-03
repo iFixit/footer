@@ -14,6 +14,8 @@ import { fontFamily, fontWeight, space, color, borderRadius } from '@core-ds/pri
 import { StoreDropdown, LanguageDropdown, StoreFlag } from '@ifixit/product-page-components';
 import stores from './stores.json';
 import languages from './languages.json';
+import links from './links.json';
+import partners from './partners.json';
 
 <Meta title="Footer" />
 
@@ -57,68 +59,27 @@ A set of components to compose iFixit.com and Shopify store footer.
                   }}
                   paddingY={space[7]}
                >
-                  <FooterList
-                     borderBottom={{
-                        base: `1px solid ${color.gray8}`,
-                        sm: 'none',
-                     }}
-                     paddingBottom={{
-                        base: space[4],
-                        sm: '0',
-                     }}
-                  >
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           About us
-                        </FooterLink>
-                     </FooterListItem>
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           Customer support
-                        </FooterLink>
-                     </FooterListItem>
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           Customer support
-                        </FooterLink>
-                     </FooterListItem>
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           Customer support
-                        </FooterLink>
-                     </FooterListItem>
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           Customer support
-                        </FooterLink>
-                     </FooterListItem>
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           Customer support
-                        </FooterLink>
-                     </FooterListItem>
-                  </FooterList>
-                  <FooterList
-                     borderBottom={{
-                        base: `1px solid ${color.gray8}`,
-                        sm: 'none',
-                     }}
-                     paddingBottom={{
-                        base: space[4],
-                        sm: '0',
-                     }}
-                  >
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           Press
-                        </FooterLink>
-                     </FooterListItem>
-                     <FooterListItem>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
-                           News
-                        </FooterLink>
-                     </FooterListItem>
-                  </FooterList>
+                  {links.map((list, index) => (
+                     <FooterList
+                        key={index}
+                        borderBottom={{
+                           base: `1px solid ${color.gray8}`,
+                           sm: 'none',
+                        }}
+                        paddingBottom={{
+                           base: space[4],
+                           sm: '0',
+                        }}
+                     >
+                        {list.map((link, linkIndex) => (
+                           <FooterListItem key={linkIndex}>
+                              <FooterLink href={link.url} fontWeight={fontWeight.bold}>
+                                 {link.label}
+                              </FooterLink>
+                           </FooterListItem>
+                        ))}
+                     </FooterList>
+                  ))}
                   <FooterList
                      borderBottom={{
                         base: `1px solid ${color.gray8}`,
@@ -154,42 +115,11 @@ A set of components to compose iFixit.com and Shopify store footer.
                      justify="center"
                   >
                      <Grid templateColumns="repeat(3, 1fr)" gap={space[4]}>
-                        <FooterLink href="#">
-                           <FooterPartner
-                              alt="Partner logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
-                           />
-                        </FooterLink>
-                        <FooterLink href="#">
-                           <FooterPartner
-                              alt="Partner logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
-                           />
-                        </FooterLink>
-                        <FooterLink href="#">
-                           <FooterPartner
-                              alt="Partner logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
-                           />
-                        </FooterLink>
-                        <FooterLink href="#">
-                           <FooterPartner
-                              alt="Partner logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
-                           />
-                        </FooterLink>
-                        <FooterLink href="#">
-                           <FooterPartner
-                              alt="Partner logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875565af2ab6da22d5134_logo-hermes.png"
-                           />
-                        </FooterLink>
-                        <FooterLink href="#">
-                           <FooterPartner
-                              alt="Partner logo"
-                              source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f9875573388ede7e3f1c9a0_logo-visa.png"
-                           />
-                        </FooterLink>
+                        {partners.map((partner, partnerIndex) => (
+                           <FooterLink href="#" key={partnerIndex}>
+                              <FooterPartner alt={partner.name} source={partner.logo} />
+                           </FooterLink>
+                        ))}
                      </Grid>
                   </GridItem>
                </Grid>
@@ -202,7 +132,7 @@ A set of components to compose iFixit.com and Shopify store footer.
                >
                   <GridItem justify={{ base: 'center', lg: 'start' }}>
                      <Stack spacing={space[8]}>
-                        <Popover defaultIsOpen stores={stores}>
+                        <Popover stores={stores}>
                            <PopoverTrigger>
                               <DropdownTrigger>
                                  Region
@@ -235,9 +165,9 @@ A set of components to compose iFixit.com and Shopify store footer.
                               />
                            </PopoverContent>
                         </Popover>
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                        <FooterLink href="#">
                            <Stack spacing={space[2]} align="center">
-                              <span>Help translate</span>
+                              <span style={{ whiteSpace: 'nowrap' }}>Help translate</span>
                               <Icon
                                  alt="Translate icon"
                                  source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f68f6fab1ac0b141961dbab_globe.svg"
