@@ -1,0 +1,122 @@
+[
+   {
+      "name": "German",
+      "autoglottonym": "Deutsch",
+      "currency": "DEM",
+      "locale": "de_DE",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/16px-Flag_of_Germany.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/32px-Flag_of_Germany.svg.png",
+      "isoCode": "DE",
+      "isSelected": false
+   },
+   {
+      "name": "English",
+      "autoglottonym": "English",
+      "currency": "USD",
+      "locale": "en_US",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Fl…the_United_States.svg/16px-Flag_of_the_United_States.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Fl…the_United_States.svg/32px-Flag_of_the_United_States.svg.png",
+      "isSelected": true,
+      "isoCode": "EN"
+   },
+   {
+      "name": "Spanish",
+      "autoglottonym": "Español",
+      "currency": "MXN",
+      "locale": "es_MX",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/16px-Flag_of_Mexico.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png",
+      "isoCode": "ES",
+      "isSelected": false
+   },
+   {
+      "name": "French",
+      "autoglottonym": "Français",
+      "currency": "EUR",
+      "locale": "fr_FR",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/16px-Flag_of_France.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/32px-Flag_of_France.svg.png",
+      "isoCode": "FR",
+      "isSelected": false
+   },
+   {
+      "name": "Italian",
+      "autoglottonym": "Italiano",
+      "currency": "EUR",
+      "locale": "it_IT",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/16px-Flag_of_Italy.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/32px-Flag_of_Italy.svg.png",
+      "isoCode": "IT",
+      "isSelected": false
+   },
+   {
+      "name": "Dutch",
+      "autoglottonym": "Nederlands",
+      "currency": "EUR",
+      "locale": "nl_NL",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Fl…_of_the_Netherlands.svg/16px-Flag_of_the_Netherlands.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Fl…_of_the_Netherlands.svg/32px-Flag_of_the_Netherlands.svg.png",
+      "isoCode": "NL",
+      "isSelected": false
+   },
+   {
+      "name": "Portuguese",
+      "autoglottonym": "Português",
+      "currency": "PP",
+      "locale": "pt_BR",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/16px-Flag_of_Brazil.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/32px-Flag_of_Brazil.svg.png",
+      "isoCode": "PT",
+      "isSelected": false
+   },
+   {
+      "name": "Russian",
+      "autoglottonym": "Pусский",
+      "currency": "RUR",
+      "locale": "ru_RU",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/16px-Flag_of_Russia.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/32px-Flag_of_Russia.svg.png",
+      "isoCode": "RU",
+      "isSelected": false
+   },
+   {
+      "name": "Turkish",
+      "autoglottonym": "Türkçe",
+      "currency": "TRY",
+      "locale": "tr_TR",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/16px-Flag_of_Turkey.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/32px-Flag_of_Turkey.svg.png",
+      "isoCode": "TR",
+      "isSelected": false
+   },
+   {
+      "name": "Chinese",
+      "autoglottonym": "中文",
+      "currency": "HKD",
+      "locale": "zh_CN",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Fl…na.svg/16px-Flag_of_the_People%27s_Republic_of_China.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Fl…na.svg/32px-Flag_of_the_People%27s_Republic_of_China.svg.png",
+      "isoCode": "ZH",
+      "isSelected": false
+   },
+   {
+      "name": "Japanese",
+      "autoglottonym": "日本語",
+      "currency": "JPY",
+      "locale": "ja_JP",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/16px-Flag_of_Japan.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/32px-Flag_of_Japan.svg.png",
+      "isoCode": "JP",
+      "isSelected": false
+   },
+   {
+      "name": "Korean",
+      "autoglottonym": "한국어",
+      "currency": "KRW",
+      "locale": "ko_KR",
+      "png16": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/16px-Flag_of_South_Korea.svg.png",
+      "png32": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/32px-Flag_of_South_Korea.svg.png",
+      "isoCode": "KO",
+      "isSelected": false
+   }
+]

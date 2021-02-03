@@ -1,3 +1,4 @@
+import { space } from '@core-ds/primitives';
 import * as React from 'react';
 import styled from 'styled-components';
 import { LayoutProps } from '../types';
@@ -5,8 +6,8 @@ import { useOnClickOutside } from '../useOutsideClick';
 
 interface PopoverContext {
    isOpen: boolean;
-   onClose: () => void;
-   onOpen: () => void;
+   onTrigger: () => void;
+   onClickOutside: () => void;
 }
 
 const PopoverContext = React.createContext<PopoverContext | null>(null);
@@ -22,26 +23,34 @@ function usePopover() {
 export type PopoverProps = {
    className?: string;
    defaultIsOpen?: boolean;
-   stores?: any;
 } & LayoutProps;
+
+enum TriggerState {
+   Idle = 'idle',
+   Activated = 'activated',
+}
 
 export function Popover({
    children,
    className,
-   stores,
    defaultIsOpen = false,
 }: React.PropsWithChildren<PopoverProps>) {
    const [isOpen, setIsOpen] = React.useState<boolean>(defaultIsOpen);
+   const triggerStateRef = React.useRef<TriggerState>(TriggerState.Idle);
 
-   console.log(stores);
    const value = React.useMemo<PopoverContext>(() => {
       return {
          isOpen,
-         onOpen() {
-            setIsOpen(true);
+         onTrigger() {
+            triggerStateRef.current = TriggerState.Activated;
          },
-         onClose() {
-            setIsOpen(false);
+         onClickOutside() {
+            if (triggerStateRef.current === TriggerState.Activated) {
+               triggerStateRef.current = TriggerState.Idle;
+               setIsOpen((current) => !current);
+            } else if (isOpen) {
+               setIsOpen(false);
+            }
          },
       };
    }, [isOpen]);
@@ -63,23 +72,11 @@ export function PopoverTrigger({ children }: React.PropsWithChildren<{}>) {
 
    const triggerProps = React.useMemo<React.HTMLAttributes<HTMLElement>>(() => {
       return {
-         onMouseDown(event: React.MouseEvent<HTMLElement>) {
-            event.stopPropagation();
-            event.preventDefault();
-            if (popover.isOpen) {
-               popover.onClose();
-            } else {
-               popover.onOpen();
-            }
+         onMouseDown() {
+            popover.onTrigger();
          },
-         onTouchStart(event: React.TouchEvent<HTMLElement>) {
-            event.stopPropagation();
-            event.preventDefault();
-            if (popover.isOpen) {
-               popover.onClose();
-            } else {
-               popover.onOpen();
-            }
+         onTouchStart() {
+            popover.onTrigger();
          },
       };
    }, [popover]);
@@ -98,14 +95,7 @@ export function PopoverContent({
    const contentRef = React.useRef<HTMLDivElement>(null);
    const popover = usePopover();
 
-   const onOutsideClick = React.useCallback(() => {
-      console.log('clicked outside');
-      if (popover.isOpen) {
-         popover.onClose();
-      }
-   }, [popover]);
-
-   useOnClickOutside(contentRef, onOutsideClick);
+   useOnClickOutside(contentRef, popover.onClickOutside);
 
    return (
       <Content ref={contentRef} className={className} data-open={popover.isOpen}>
@@ -118,6 +108,7 @@ const Content = styled.div`
    display: none;
    position: absolute;
    transform: translateY(-100%);
+   padding-bottom: ${space[1]};
    top: 0;
    left: 0;
    &[data-open='true'] {

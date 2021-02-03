@@ -7,11 +7,13 @@ import { Grid, GridItem } from './Grid';
 import { Popover, PopoverTrigger, PopoverContent } from './Popover';
 import { FooterPartner } from './FooterPartner';
 import { FooterList, FooterListItem, FooterListIcon } from './FooterList';
+import { DropdownTrigger, DropdownTriggerTag } from './DropdownTrigger';
 import { Icon } from './Icon';
 import styled from 'styled-components';
-import { fontFamily, fontWeight, space, color } from '@core-ds/primitives';
-// import { StoreDropdown } from '@ifixit/product-page-components';
+import { fontFamily, fontWeight, space, color, borderRadius } from '@core-ds/primitives';
+import { StoreDropdown, LanguageDropdown, StoreFlag } from '@ifixit/product-page-components';
 import stores from './stores.json';
+import languages from './languages.json';
 
 <Meta title="Footer" />
 
@@ -19,6 +21,22 @@ export const DemoPage = styled.div`
    display: flex;
    flex-direction: column;
    font-family: ${fontFamily.inter};
+   margin-top: 100px;
+`;
+
+export const StyledStoreDropdown = styled(StoreDropdown)`
+   background-color: ${color.white};
+   border-radius: ${borderRadius.lg};
+   a {
+      text-decoration: none;
+   }
+`;
+
+export const StyledLanguageDropdown = styled(LanguageDropdown)`
+   border-radius: 8px;
+   a {
+      text-decoration: none;
+   }
 `;
 
 # iFixit footer
@@ -52,6 +70,26 @@ A set of components to compose iFixit.com and Shopify store footer.
                      <FooterListItem>
                         <FooterLink href="#" fontWeight={fontWeight.bold}>
                            About us
+                        </FooterLink>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Customer support
+                        </FooterLink>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Customer support
+                        </FooterLink>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Customer support
+                        </FooterLink>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                           Customer support
                         </FooterLink>
                      </FooterListItem>
                      <FooterListItem>
@@ -166,10 +204,35 @@ A set of components to compose iFixit.com and Shopify store footer.
                      <Stack spacing={space[8]}>
                         <Popover defaultIsOpen stores={stores}>
                            <PopoverTrigger>
-                              <button>region</button>
+                              <DropdownTrigger>
+                                 Region
+                                 <DropdownTriggerTag>
+                                    <StoreFlag storeCode={'us'} />
+                                 </DropdownTriggerTag>
+                              </DropdownTrigger>
                            </PopoverTrigger>
                            <PopoverContent>
-                              <p>content</p>
+                              <StyledStoreDropdown
+                                 stores={stores}
+                                 onClickStore={(store) => console.log(store)}
+                              />
+                           </PopoverContent>
+                        </Popover>
+                        <Popover stores={stores}>
+                           <PopoverTrigger>
+                              <DropdownTrigger>
+                                 Language
+                                 <DropdownTriggerTag>EN</DropdownTriggerTag>
+                              </DropdownTrigger>
+                           </PopoverTrigger>
+                           <PopoverContent>
+                              <StyledLanguageDropdown
+                                 languages={languages}
+                                 translationPreferencesUrl="https://www.cominor.com/Login"
+                                 machineTranslationEnabled
+                                 isLightTheme
+                                 machineTranslationRequested={false}
+                              />
                            </PopoverContent>
                         </Popover>
                         <FooterLink href="#" fontWeight={fontWeight.bold}>
@@ -183,7 +246,7 @@ A set of components to compose iFixit.com and Shopify store footer.
                         </FooterLink>
                      </Stack>
                   </GridItem>
-                  <GridItem justify={{ base: 'center', lg: 'end' }}>
+                  <GridItem justify={{ base: 'center', lg: 'end' }} align="center">
                      <Stack align="stretch" spacing={space[4]}>
                         <FooterLink href="#">Licensed under Creative Commons</FooterLink>
                         <Divider orientation={DividerOrientation.Vertical} />

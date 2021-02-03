@@ -48,6 +48,7 @@ const gridItemStyles = css`
    ${baseProperty('columnStart', 'grid-column-start')};
    ${baseProperty('columnEnd', 'grid-column-end')};
    ${baseProperty('justify', 'justify-self')};
+   ${baseProperty('align', 'align-self')};
    ${createResponsiveStyles(
       (key) => css`
          ${responsiveProperty(key, 'rowStart', 'grid-row-start')};
@@ -55,6 +56,7 @@ const gridItemStyles = css`
          ${responsiveProperty(key, 'columnStart', 'grid-column-start')};
          ${responsiveProperty(key, 'columnEnd', 'grid-column-end')};
          ${responsiveProperty(key, 'justify', 'justify-self')};
+         ${responsiveProperty(key, 'align', 'align-self')};
       `
    )}
 `;
