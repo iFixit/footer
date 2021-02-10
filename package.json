@@ -1,5 +1,9 @@
 {
    "name": "footer",
+   "repository": {
+      "type": "git",
+      "url": "git@github.com:iFixit/footer.git"
+   },
    "source": "src/index.tsx",
    "license": "UNLICENSED",
    "main": "dist/footer.js",
@@ -7,6 +11,9 @@
    "exports": "dist/footer.modern.js",
    "module": "dist/footer.module.js",
    "unpkg": "dist/footer.umd.js",
+   "files": [
+      "dist"
+   ],
    "scripts": {
       "build": "microbundle --jsx React.createElement",
       "dev": "microbundle watch",

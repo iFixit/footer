@@ -11,7 +11,12 @@ import { DropdownTrigger, DropdownTriggerTag } from './DropdownTrigger';
 import { Icon } from './Icon';
 import styled from 'styled-components';
 import { fontFamily, fontWeight, space, color, borderRadius } from '@core-ds/primitives';
-import { StoreDropdown, LanguageDropdown, StoreFlag } from '@ifixit/product-page-components';
+import {
+   StoreDropdown,
+   StoreFlag,
+   Dropdown,
+   LanguageDropdownContainer,
+} from '@ifixit/product-page-components';
 import stores from './stores.json';
 import languages from './languages.json';
 import links from './links.json';
@@ -26,20 +31,14 @@ export const DemoPage = styled.div`
    margin-top: 100px;
 `;
 
-export const StyledStoreDropdown = styled(StoreDropdown)`
-   background-color: ${color.white};
-   border-radius: ${borderRadius.lg};
-   a {
-      text-decoration: none;
-   }
-`;
-
-export const StyledLanguageDropdown = styled(LanguageDropdown)`
-   border-radius: 8px;
-   a {
-      text-decoration: none;
-   }
-`;
+export const StoreSelector = ({ stores, onClickStore, ...tippyOptions }) => {
+   const currentStore = stores.find((store) => store.isDisplayStore);
+   return (
+      <Dropdown icon={<StoreFlag storeCode={currentStore.storeCode} />} {...tippyOptions}>
+         <StoreDropdown currentStore={currentStore} stores={stores} onClickStore={onClickStore} />
+      </Dropdown>
+   );
+};
 
 # iFixit footer
 
@@ -132,39 +131,17 @@ A set of components to compose iFixit.com and Shopify store footer.
                >
                   <GridItem justify={{ base: 'center', lg: 'start' }}>
                      <Stack spacing={space[8]}>
-                        <Popover stores={stores}>
-                           <PopoverTrigger>
-                              <DropdownTrigger>
-                                 Region
-                                 <DropdownTriggerTag>
-                                    <StoreFlag storeCode={'us'} />
-                                 </DropdownTriggerTag>
-                              </DropdownTrigger>
-                           </PopoverTrigger>
-                           <PopoverContent>
-                              <StyledStoreDropdown
-                                 stores={stores}
-                                 onClickStore={(store) => console.log(store)}
-                              />
-                           </PopoverContent>
-                        </Popover>
-                        <Popover stores={stores}>
-                           <PopoverTrigger>
-                              <DropdownTrigger>
-                                 Language
-                                 <DropdownTriggerTag>EN</DropdownTriggerTag>
-                              </DropdownTrigger>
-                           </PopoverTrigger>
-                           <PopoverContent>
-                              <StyledLanguageDropdown
-                                 languages={languages}
-                                 translationPreferencesUrl="https://www.cominor.com/Login"
-                                 machineTranslationEnabled
-                                 isLightTheme
-                                 machineTranslationRequested={false}
-                              />
-                           </PopoverContent>
-                        </Popover>
+                        <StoreSelector
+                           stores={stores}
+                           onClickStore={(store) => console.log(store)}
+                           placement="top-end"
+                        />
+                        <LanguageDropdownContainer
+                           languages={languages}
+                           translationPreferencesUrl="https://www.cominor.com/Login"
+                           machineTranslationRequested={false}
+                           placement="top-end"
+                        />
                         <FooterLink href="#">
                            <Stack spacing={space[2]} align="center">
                               <span style={{ whiteSpace: 'nowrap' }}>Help translate</span>
