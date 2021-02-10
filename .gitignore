@@ -83,3 +83,6 @@ dist
 .cache
 
 .DS_Store
+.vercel
+
+storybook-static
