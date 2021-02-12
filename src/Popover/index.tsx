@@ -2,7 +2,7 @@ import { space } from '@core-ds/primitives';
 import * as React from 'react';
 import styled from 'styled-components';
 import { LayoutProps } from '../types';
-import { useOnClickOutside } from '../useOutsideClick';
+import { useOutsideClick } from '../useOutsideClick';
 
 interface PopoverContext {
    isOpen: boolean;
@@ -95,7 +95,7 @@ export function PopoverContent({
    const contentRef = React.useRef<HTMLDivElement>(null);
    const popover = usePopover();
 
-   useOnClickOutside(contentRef, popover.onClickOutside);
+   useOutsideClick(contentRef, popover.onClickOutside);
 
    return (
       <Content ref={contentRef} className={className} data-open={popover.isOpen}>

@@ -21,7 +21,8 @@
       "build-storybook": "build-storybook",
       "format": "prettier --write .",
       "analyze-bundle": "source-map-explorer dist/footer.js",
-      "chromatic": "npx chromatic"
+      "chromatic": "npx chromatic",
+      "transform-svg": "npx @svgr/cli -d src/svg src/svg/assets --typescript"
    },
    "peerDependencies": {
       "@core-ds/primitives": ">=1",
@@ -32,13 +33,13 @@
       "@axe-core/react": "4.1.0",
       "@babel/core": "7.12.10",
       "@core-ds/primitives": "1.2.0",
-      "@ifixit/product-page-components": "1.1.12",
       "@storybook/addon-a11y": "6.1.15",
       "@storybook/addon-actions": "6.1.15",
       "@storybook/addon-console": "1.2.2",
       "@storybook/addon-essentials": "6.1.15",
       "@storybook/addon-links": "6.1.15",
       "@storybook/react": "6.1.15",
+      "@svgr/cli": "5.5.0",
       "@types/node": "14.14.22",
       "@types/react": "17.0.0",
       "@types/styled-components": "5.1.7",
