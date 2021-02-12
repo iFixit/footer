@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useOnClickOutside(
+export function useOutsideClick(
    ref: React.RefObject<HTMLElement>,
    handler: (event: Event) => void
 ) {
@@ -12,12 +12,10 @@ export function useOnClickOutside(
          }
       };
 
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
+      document.addEventListener('click', listener);
 
       return () => {
-         document.removeEventListener('mousedown', listener);
-         document.removeEventListener('touchstart', listener);
+         document.removeEventListener('click', listener);
       };
    }, [ref, handler]);
 }

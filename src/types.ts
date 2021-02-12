@@ -32,3 +32,23 @@ export interface LayoutProps {
    borderLeft?: Style<CSSProperties['borderLeft']>;
    borderRight?: Style<CSSProperties['borderRight']>;
 }
+
+export type EventKeys =
+   | 'ArrowDown'
+   | 'ArrowUp'
+   | 'ArrowLeft'
+   | 'ArrowRight'
+   | 'Enter'
+   | 'Space'
+   | 'Tab'
+   | 'Backspace'
+   | 'Control'
+   | 'Meta'
+   | 'Home'
+   | 'End'
+   | 'PageDown'
+   | 'PageUp'
+   | 'Delete'
+   | 'Escape'
+   | ' '
+   | 'Shift';

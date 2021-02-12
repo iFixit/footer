@@ -1,6 +1,6 @@
 import { breakpoint } from '@core-ds/primitives';
 import { css } from 'styled-components';
-import { Breakpoint, ResponsiveStyle, Style } from './types';
+import { Breakpoint, EventKeys, ResponsiveStyle, Style } from './types';
 
 const breakpointKeys: Array<keyof Breakpoint> = Object.keys(breakpoint) as any;
 
@@ -107,3 +107,17 @@ export const layout = css`
       `
    )}
 `;
+
+/**
+ * Get the normalized event key across all browsers
+ * @param event keyboard event
+ */
+export function normalizeEventKey(event: React.KeyboardEvent) {
+   const { key, keyCode } = event;
+
+   const isArrowKey = keyCode >= 37 && keyCode <= 40 && key.indexOf('Arrow') !== 0;
+
+   const eventKey = isArrowKey ? `Arrow${key}` : key;
+
+   return eventKey as EventKeys;
+}
