@@ -143,26 +143,71 @@ export function useMenuList(props: MenuListProps): MenuListInternalProps {
 
 export type MenuItemProps = React.PropsWithChildren<{
    className?: string;
+   onSelect?: (event: React.MouseEvent<HTMLLIElement, MouseEvent> | React.KeyboardEvent) => void;
+   url?: string;
 }>;
 
-export function useMenuItem(props: MenuItemProps) {
-   const menu = useMenuContext();
+export function useMenuItem({ onSelect, url, ...props }: MenuItemProps) {
+   const { isOpen, focusContext } = useMenuContext();
    const itemRef = React.useRef<any>(null);
 
-   const isFocused = useFocusItem({
-      isMenuOpen: menu.isOpen,
-      context: menu.focusContext,
+   const { isFocused, index } = useFocusItem({
+      isMenuOpen: isOpen,
+      context: focusContext,
       ref: itemRef,
    });
 
-   const menuItemProps = React.useMemo((): ElementProps<any> => {
+   const onKeyDown = React.useCallback(
+      (event: React.KeyboardEvent) => {
+         const eventKey = normalizeEventKey(event);
+         if (eventKey === 'Enter' && url == null) {
+            // event.preventDefault();
+            onSelect?.(event);
+         }
+      },
+      [onSelect, url]
+   );
+
+   const onMouseEnter = React.useCallback(() => {
+      focusContext.focus(index);
+   }, [focusContext.focus, itemRef, index]);
+
+   const onMouseMove = React.useCallback(() => {
+      if (document.activeElement !== itemRef.current) {
+         focusContext.focus(index);
+      }
+   }, [focusContext.focus, itemRef, index]);
+
+   const onMouseLeave = React.useCallback(() => {
+      focusContext.blur();
+   }, [focusContext.blur]);
+
+   const menuItemProps = React.useMemo((): ElementProps<any> &
+      MenuItemProps & { 'data-focus': boolean; href?: string } => {
       return {
          ...props,
+         href: url,
+         'data-focus': isFocused,
          role: 'menuitem',
          ref: itemRef,
          tabIndex: isFocused ? 0 : -1,
+         onMouseEnter,
+         onMouseMove,
+         onMouseLeave,
+         onKeyDown,
+         onClick: onSelect,
       };
-   }, [props]);
+   }, [
+      props,
+      itemRef,
+      isFocused,
+      onMouseEnter,
+      onMouseMove,
+      onMouseLeave,
+      onSelect,
+      onKeyDown,
+      url,
+   ]);
 
    return menuItemProps;
 }

@@ -42,9 +42,11 @@ export const MenuButton = styled(UnstyledMenuButton)`
    font-size: 14px;
    cursor: pointer;
    outline: none;
-   border-radius: ${borderRadius.sm};
+   border-radius: ${borderRadius.md};
+   font-family: inherit;
+   padding: 0;
    &:focus {
-      box-shadow: rgb(66 153 225 / 60%) 0px 0px 0px 3px;
+      box-shadow: 0 0 0 0.2rem rgb(25 117 241 / 25%);
    }
 `;
 
@@ -64,7 +66,7 @@ export const MenuList = styled(UnstyledMenuList)`
    color: black;
    display: none;
    position: absolute;
-   transform: translateY(-100%);
+   transform: translateY(-100%) translateY(-${space[2]});
    top: 0;
    left: 0;
    min-width: 224px;
@@ -75,12 +77,39 @@ export const MenuList = styled(UnstyledMenuList)`
 
 function UnstyledMenuItem(props: MenuItemProps) {
    const itemProps = useMenuItem(props);
-   return <li {...itemProps} />;
+   if (props.url != null) {
+      const { className, ...otherProps } = itemProps;
+      return (
+         <li className={className} role="none" data-type="link">
+            <a {...otherProps} />
+         </li>
+      );
+   }
+   return <li {...itemProps} data-type="button" />;
 }
 
 export const MenuItem = styled(UnstyledMenuItem)`
    outline: none;
-   &:focus {
-      background-color: red;
+   transition: background-color 400ms;
+   cursor: pointer;
+   transition: background-color 400ms;
+   &[data-type='button'] {
+      padding: ${space[2]} ${space[3]};
+   }
+   &[data-focus='true']:focus {
+      background-color: ${color.gray2};
+   }
+   & > a {
+      width: 100%;
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+      color: ${color.black};
+      padding: ${space[2]} ${space[3]};
+      box-sizing: border-box;
+      transition: background-color 400ms;
+      &[data-focus='true']:focus {
+         background-color: ${color.gray2};
+      }
    }
 `;

@@ -1,6 +1,7 @@
-import { space } from '@core-ds/primitives';
+import { fontWeight, space } from '@core-ds/primitives';
 import * as React from 'react';
 import styled, { css } from 'styled-components';
+import { Link } from '../Link';
 import { LayoutProps } from '../types';
 import { layout } from '../utils';
 
@@ -41,27 +42,20 @@ export const FooterListItem = styled.li<FooterListItemProps>`
    }
 `;
 
-export type FooterListProps = {
-   className?: string;
-} & LayoutProps;
+export type FooterListProps = React.PropsWithChildren<
+   {
+      className?: string;
+   } & LayoutProps
+>;
 
-export const FooterList = styled.ul
-   .withConfig({
-      shouldForwardProp: (prop, defaultValidator) =>
-         !['spacing'].includes(prop) && defaultValidator(prop),
-   })
-   .attrs<FooterListProps>({
-      role: 'list',
-   })<FooterListProps>`
+export const FooterList = styled.ul.attrs<FooterListProps>({
+   role: 'list',
+})<FooterListProps>`
    margin: 0;
    padding: 0;
    list-style: none;
    ${layout};
-   ${(props) =>
-      props.spacing != null &&
-      css`
-         & ${FooterListItem}:not(:first-child) {
-            margin-top: ${props.spacing};
-         }
-      `};
+   ${Link} {
+      font-weight: ${fontWeight.bold};
+   }
 `;

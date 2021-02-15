@@ -1,51 +1,44 @@
 [
    {
       "name": "United States",
-      "storeCode": "us",
-      "link": "https://www.ifixit.com/Store",
-      "currency": "USD",
-      "isDisplayStore": true
+      "countryCode": "us",
+      "url": "https://www.ifixit.com/Store",
+      "currency": "USD"
    },
    {
       "name": "Australia",
-      "storeCode": "au",
-      "link": "https://australia.ifixit.com/",
-      "currency": "AUD",
-      "isDisplayStore": false
+      "countryCode": "au",
+      "url": "https://australia.ifixit.com/",
+      "currency": "AUD"
    },
    {
       "name": "Canada",
-      "storeCode": "ca",
-      "link": "https://canada.ifixit.com/",
-      "currency": "CAD",
-      "isDisplayStore": false
+      "countryCode": "ca",
+      "url": "https://canada.ifixit.com/",
+      "currency": "CAD"
    },
    {
       "name": "Germany",
-      "storeCode": "de",
-      "link": "https://store.ifixit.de/",
-      "currency": "EUR",
-      "isDisplayStore": false
+      "countryCode": "de",
+      "url": "https://store.ifixit.de/",
+      "currency": "EUR"
    },
    {
       "name": "France",
-      "storeCode": "fr",
-      "link": "https://store.ifixit.fr/",
-      "currency": "EUR",
-      "isDisplayStore": false
+      "countryCode": "fr",
+      "url": "https://store.ifixit.fr/",
+      "currency": "EUR"
    },
    {
       "name": "United Kingdom",
-      "storeCode": "gb",
-      "link": "https://store.ifixit.co.uk/",
-      "currency": "GBP",
-      "isDisplayStore": false
+      "countryCode": "gb",
+      "url": "https://store.ifixit.co.uk/",
+      "currency": "GBP"
    },
    {
       "name": "Europe",
-      "storeCode": "eu",
-      "link": "https://eustore.ifixit.com/",
-      "currency": "EUR",
-      "isDisplayStore": false
+      "countryCode": "eu",
+      "url": "https://eustore.ifixit.com/",
+      "currency": "EUR"
    }
 ]

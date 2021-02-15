@@ -1,21 +1,19 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { Footer } from './Footer';
 import { Divider, DividerOrientation } from './Divider';
-import { FooterLink } from './FooterLink';
+import { Link } from './Link';
 import { Stack } from './Stack';
 import { Grid, GridItem } from './Grid';
-import { Popover, PopoverTrigger, PopoverContent } from './Popover';
 import { FooterPartner } from './FooterPartner';
 import { FooterList, FooterListItem, FooterListIcon } from './FooterList';
-import { DropdownTrigger, DropdownTriggerTag } from './DropdownTrigger';
-import { Menu, MenuButton, MenuList, MenuItem } from './Menu';
-import { Icon } from './Icon';
+import { StoreMenu } from './StoreMenu';
 import styled from 'styled-components';
 import { fontFamily, fontWeight, space, color, borderRadius } from '@core-ds/primitives';
 import stores from './stores.json';
 import languages from './languages.json';
 import links from './links.json';
 import partners from './partners.json';
+import { Globe } from './svg';
 
 <Meta title="Footer" />
 
@@ -58,9 +56,9 @@ A set of components to compose iFixit.com and Shopify store footer.
                      >
                         {list.map((link, linkIndex) => (
                            <FooterListItem key={linkIndex}>
-                              <FooterLink href={link.url} fontWeight={fontWeight.bold}>
+                              <Link href={link.url} fontWeight={fontWeight.bold}>
                                  {link.label}
-                              </FooterLink>
+                              </Link>
                            </FooterListItem>
                         ))}
                      </FooterList>
@@ -80,18 +78,18 @@ A set of components to compose iFixit.com and Shopify store footer.
                            alt="Facebook logo"
                            source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbe9673a45e28ed13ef_facebook.svg"
                         />
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                        <Link href="#" fontWeight={fontWeight.bold}>
                            Facebook
-                        </FooterLink>
+                        </Link>
                      </FooterListItem>
                      <FooterListItem>
                         <FooterListIcon
                            alt="Facebook logo"
                            source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbef76e380c31ad25f0_twitter.svg"
                         />
-                        <FooterLink href="#" fontWeight={fontWeight.bold}>
+                        <Link href="#" fontWeight={fontWeight.bold}>
                            Twitter
-                        </FooterLink>
+                        </Link>
                      </FooterListItem>
                   </FooterList>
                   <GridItem
@@ -101,9 +99,9 @@ A set of components to compose iFixit.com and Shopify store footer.
                   >
                      <Grid templateColumns="repeat(3, 1fr)" gap={space[4]}>
                         {partners.map((partner, partnerIndex) => (
-                           <FooterLink href="#" key={partnerIndex}>
+                           <Link href="#" key={partnerIndex}>
                               <FooterPartner alt={partner.name} source={partner.logo} />
-                           </FooterLink>
+                           </Link>
                         ))}
                      </Grid>
                   </GridItem>
@@ -117,42 +115,24 @@ A set of components to compose iFixit.com and Shopify store footer.
                >
                   <GridItem justify={{ base: 'center', lg: 'start' }}>
                      <Stack spacing={space[8]}>
-                        <Menu defaultIsOpen>
-                           <MenuButton>Region</MenuButton>
-                           <MenuList>
-                              <MenuItem>italy</MenuItem>
-                              <MenuItem>germany</MenuItem>
-                           </MenuList>
-                        </Menu>
-                        <Popover>
-                           <PopoverTrigger>
-                              <DropdownTrigger>
-                                 Region
-                                 <DropdownTriggerTag></DropdownTriggerTag>
-                              </DropdownTrigger>
-                           </PopoverTrigger>
-                           <PopoverContent>
-                              <p>Content</p>
-                           </PopoverContent>
-                        </Popover>
-                        <FooterLink href="#">
-                           <Stack spacing={space[2]} align="center">
-                              <span style={{ whiteSpace: 'nowrap' }}>Help translate</span>
-                              <Icon
-                                 alt="Translate icon"
-                                 source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f68f6fab1ac0b141961dbab_globe.svg"
-                              />
-                           </Stack>
-                        </FooterLink>
+                        <StoreMenu
+                           initialCountryCode="US"
+                           label="Region"
+                           onChange={(store) => console.log('Clicked', store.name)}
+                           stores={stores}
+                        />
+                        <Link href="#" suffix={<Globe />}>
+                           <span style={{ whiteSpace: 'nowrap' }}>Help translate</span>
+                        </Link>
                      </Stack>
                   </GridItem>
                   <GridItem justify={{ base: 'center', lg: 'end' }} align="center">
                      <Stack align="stretch" spacing={space[4]}>
-                        <FooterLink href="#">Licensed under Creative Commons</FooterLink>
+                        <Link href="#">Licensed under Creative Commons</Link>
                         <Divider orientation={DividerOrientation.Vertical} />
-                        <FooterLink href="#">Privacy</FooterLink>
+                        <Link href="#">Privacy</Link>
                         <Divider orientation={DividerOrientation.Vertical} />
-                        <FooterLink href="#">Legal</FooterLink>
+                        <Link href="#">Legal</Link>
                      </Stack>
                   </GridItem>
                </Grid>

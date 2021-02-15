@@ -1,5 +1,6 @@
 {
-   "name": "footer",
+   "name": "@ifixit/footer",
+   "version": "0.0.1",
    "repository": {
       "type": "git",
       "url": "git@github.com:iFixit/footer.git"

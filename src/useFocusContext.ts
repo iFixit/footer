@@ -9,6 +9,8 @@ export interface FocusContext<Element extends HTMLElement = HTMLElement> {
    focusLast: () => void;
    focusNext: () => void;
    focusPrevious: () => void;
+   focus: (index: number) => void;
+   blur: () => void;
 }
 
 export function useFocusContext<
@@ -60,6 +62,14 @@ export function useFocusContext<
       setFocusedIndex((currentIndex) => (currentIndex - 1 + elements.length) % elements.length);
    }, [elements]);
 
+   const focus = React.useCallback((index: number) => {
+      setFocusedIndex(index);
+   }, []);
+
+   const blur = React.useCallback(() => {
+      setFocusedIndex(-1);
+   }, []);
+
    return {
       elements,
       focusedIndex,
@@ -69,6 +79,8 @@ export function useFocusContext<
       focusLast,
       focusNext,
       focusPrevious,
+      focus,
+      blur,
    };
 }
 
@@ -78,17 +90,23 @@ export interface UseFocusItemProps<Element extends HTMLElement> {
    ref: React.MutableRefObject<Element | null>;
 }
 
+export interface FocusItem {
+   isFocused: boolean;
+   index: number;
+}
+
 export function useFocusItem<Element extends HTMLElement>({
    isMenuOpen,
    context,
    ref,
-}: UseFocusItemProps<Element>) {
+}: UseFocusItemProps<Element>): FocusItem {
    const { elements, register, unregister, focusedIndex } = context;
 
-   const isFocused = React.useMemo(() => {
-      const itemIndex = elements.findIndex((el) => el === ref.current);
-      return itemIndex >= 0 && itemIndex === focusedIndex;
-   }, [elements, focusedIndex]);
+   const index = React.useMemo(() => {
+      return elements.findIndex((el) => el === ref.current);
+   }, [elements, ref]);
+
+   const isFocused = index >= 0 && index === focusedIndex;
 
    React.useEffect(() => {
       if (ref.current) {
@@ -108,5 +126,5 @@ export function useFocusItem<Element extends HTMLElement>({
       }
    }, [isFocused, ref, isMenuOpen]);
 
-   return isFocused;
+   return { isFocused, index };
 }
