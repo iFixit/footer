@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { LayoutProps } from '../types';
+import { LayoutProps, Style } from '../types';
 import {
    baseProperty,
    createResponsiveStyles,
@@ -9,13 +9,15 @@ import {
    responsiveProperty,
 } from '../utils';
 
-export type StackProps = {
-   className?: string;
-   direction?: React.CSSProperties['flexDirection'];
-   spacing?: string;
-   justify?: React.CSSProperties['justifyContent'];
-   align?: React.CSSProperties['alignItems'];
-} & LayoutProps;
+export type StackProps = React.PropsWithChildren<
+   {
+      className?: string;
+      direction?: Style<React.CSSProperties['flexDirection']>;
+      spacing?: Style<string>;
+      justify?: Style<React.CSSProperties['justifyContent']>;
+      align?: Style<React.CSSProperties['alignItems']>;
+   } & LayoutProps
+>;
 
 const stackStyles = css<StackProps>`
    ${baseProperty('direction', 'flex-direction')};
@@ -26,7 +28,10 @@ const stackStyles = css<StackProps>`
       isResponsiveStyle(props.spacing) && props.spacing.base
          ? css`
               & > :not(:first-child) {
-                 margin-left: ${props.spacing.base};
+                 ${props.direction === 'column' ||
+                 (isResponsiveStyle(props.direction) && props.direction?.base === 'column')
+                    ? `margin-top: ${props.spacing.base}; margin-left: unset;`
+                    : `margin-left: ${props.spacing.base}; margin-top: unset;`}
               }
            `
          : props.spacing == null
@@ -48,6 +53,10 @@ const stackStyles = css<StackProps>`
             css`
                & > :not(:first-child) {
                   margin-left: ${props.spacing[key]};
+                  ${props.direction === 'column' ||
+                  (isResponsiveStyle(props.direction) && props.direction?.[key] === 'column')
+                     ? `margin-top: ${props.spacing[key]}; margin-left: unset;`
+                     : `margin-left: ${props.spacing[key]}; margin-top: unset;`}
                }
             `};
       `
@@ -56,7 +65,7 @@ const stackStyles = css<StackProps>`
 
 export const Stack = styled.div.withConfig({
    shouldForwardProp: (prop, defaultValidator) =>
-      !['spacing'].includes(prop) && defaultValidator(prop),
+      !['spacing', 'direction', 'justify', 'align'].includes(prop) && defaultValidator(prop),
 })<StackProps>`
    display: flex;
    ${layout}

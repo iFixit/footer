@@ -5,7 +5,7 @@ import { Link } from './Link';
 import { Stack } from './Stack';
 import { Grid, GridItem } from './Grid';
 import { FooterPartner } from './FooterPartner';
-import { FooterList, FooterListItem, FooterListIcon } from './FooterList';
+import { FooterList, FooterListItem } from './FooterList';
 import { StoreMenu } from './StoreMenu';
 import styled from 'styled-components';
 import { fontFamily, fontWeight, space, color, borderRadius } from '@core-ds/primitives';
@@ -13,7 +13,7 @@ import stores from './stores.json';
 import languages from './languages.json';
 import links from './links.json';
 import partners from './partners.json';
-import { Globe } from './svg';
+import { Globe, FacebookLogo, InstagramLogo, TwitterLogo, YoutubeLogo, RepairOrgLogo } from './svg';
 
 <Meta title="Footer" />
 
@@ -74,21 +74,28 @@ A set of components to compose iFixit.com and Shopify store footer.
                      }}
                   >
                      <FooterListItem>
-                        <FooterListIcon
-                           alt="Facebook logo"
-                           source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbe9673a45e28ed13ef_facebook.svg"
-                        />
-                        <Link href="#" fontWeight={fontWeight.bold}>
+                        <Link href="#" prefix={<FacebookLogo />}>
                            Facebook
                         </Link>
                      </FooterListItem>
                      <FooterListItem>
-                        <FooterListIcon
-                           alt="Facebook logo"
-                           source="https://uploads-ssl.webflow.com/5c9b91208becd3baee84a04b/5f690fbef76e380c31ad25f0_twitter.svg"
-                        />
-                        <Link href="#" fontWeight={fontWeight.bold}>
+                        <Link href="#" prefix={<TwitterLogo />}>
                            Twitter
+                        </Link>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <Link href="#" prefix={<InstagramLogo />}>
+                           Instagram
+                        </Link>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <Link href="#" prefix={<YoutubeLogo />}>
+                           Youtube
+                        </Link>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <Link href="#" prefix={<RepairOrgLogo />}>
+                           Repair.org
                         </Link>
                      </FooterListItem>
                   </FooterList>
@@ -110,11 +117,14 @@ A set of components to compose iFixit.com and Shopify store footer.
                <Grid
                   templateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
                   gap={space[4]}
-                  paddingX={space[7]}
+                  paddingX={{ base: space[5], sm: space[7] }}
                   paddingY={space[5]}
                >
-                  <GridItem justify={{ base: 'center', lg: 'start' }}>
-                     <Stack spacing={space[8]}>
+                  <GridItem>
+                     <Stack
+                        direction={{ base: 'column', sm: 'row' }}
+                        spacing={{ base: space[2], sm: space[8] }}
+                     >
                         <StoreMenu
                            initialCountryCode="US"
                            label="Region"
@@ -126,12 +136,22 @@ A set of components to compose iFixit.com and Shopify store footer.
                         </Link>
                      </Stack>
                   </GridItem>
-                  <GridItem justify={{ base: 'center', lg: 'end' }} align="center">
-                     <Stack align="stretch" spacing={space[4]}>
+                  <GridItem justify={{ base: 'start', lg: 'end' }} align="center">
+                     <Stack
+                        align="stretch"
+                        direction={{ base: 'column', sm: 'row' }}
+                        spacing={{ base: space[2], sm: space[4] }}
+                     >
                         <Link href="#">Licensed under Creative Commons</Link>
-                        <Divider orientation={DividerOrientation.Vertical} />
+                        <Divider
+                           orientation={DividerOrientation.Vertical}
+                           display={{ base: 'none', sm: 'block' }}
+                        />
                         <Link href="#">Privacy</Link>
-                        <Divider orientation={DividerOrientation.Vertical} />
+                        <Divider
+                           orientation={DividerOrientation.Vertical}
+                           display={{ base: 'none', sm: 'block' }}
+                        />
                         <Link href="#">Legal</Link>
                      </Stack>
                   </GridItem>

@@ -6,4 +6,4 @@ export * from './Grid';
 export * from './Link';
 export * from './Stack';
 export * from './StoreMenu';
-export { Globe } from './svg';
+export { Globe, FacebookLogo, InstagramLogo, TwitterLogo, YoutubeLogo, RepairOrgLogo } from './svg';

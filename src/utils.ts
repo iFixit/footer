@@ -42,11 +42,6 @@ export const createResponsiveStyles = (breakpointMapper: (key: keyof Breakpoint)
    );
 };
 
-interface Property {
-   aliases: string[];
-   cssName: string;
-}
-
 export const layout = css`
    ${baseProperty('margin', 'margin')};
    ${baseProperty('marginX', 'margin-left')};

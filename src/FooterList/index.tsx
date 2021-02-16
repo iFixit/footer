@@ -1,32 +1,9 @@
 import { fontWeight, space } from '@core-ds/primitives';
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from '../Link';
 import { LayoutProps } from '../types';
 import { layout } from '../utils';
-
-export interface FooterListIconProps {
-   className?: string;
-   alt: string;
-   source: string;
-}
-
-export function FooterListIcon({ className, source, alt }: FooterListIconProps) {
-   return (
-      <IconContainer className={className}>
-         <img src={source} alt={alt} />
-      </IconContainer>
-   );
-}
-
-const IconContainer = styled.div`
-   display: inline-block;
-   width: 18px;
-   height: 16px;
-   & img {
-      max-width: 100%;
-   }
-`;
 
 export interface FooterListItemProps {
    className?: string;
