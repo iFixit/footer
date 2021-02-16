@@ -91,7 +91,7 @@ export function useMenu({ id, defaultIsOpen = false }: MenuProps): MenuContext {
 
 export type MenuListProps = React.HTMLAttributes<HTMLUListElement>;
 
-export type MenuListInternalProps = ElementProps<HTMLUListElement> & {
+type MenuListInternalProps = ElementProps<HTMLUListElement> & {
    'data-active': boolean;
 };
 
