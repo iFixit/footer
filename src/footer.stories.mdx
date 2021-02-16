@@ -43,17 +43,7 @@ A set of components to compose iFixit.com and Shopify store footer.
                   paddingY={space[7]}
                >
                   {links.map((list, index) => (
-                     <FooterList
-                        key={index}
-                        borderBottom={{
-                           base: `1px solid ${color.gray8}`,
-                           sm: 'none',
-                        }}
-                        paddingBottom={{
-                           base: space[4],
-                           sm: '0',
-                        }}
-                     >
+                     <FooterList key={index}>
                         {list.map((link, linkIndex) => (
                            <FooterListItem key={linkIndex}>
                               <Link href={link.url} fontWeight={fontWeight.bold}>
@@ -63,16 +53,7 @@ A set of components to compose iFixit.com and Shopify store footer.
                         ))}
                      </FooterList>
                   ))}
-                  <FooterList
-                     borderBottom={{
-                        base: `1px solid ${color.gray8}`,
-                        sm: 'none',
-                     }}
-                     paddingBottom={{
-                        base: space[4],
-                        sm: '0',
-                     }}
-                  >
+                  <FooterList>
                      <FooterListItem>
                         <Link href="#" prefix={<FacebookLogo />}>
                            Facebook
@@ -132,7 +113,7 @@ A set of components to compose iFixit.com and Shopify store footer.
                            stores={stores}
                         />
                         <Link href="#" suffix={<Globe />}>
-                           <span style={{ whiteSpace: 'nowrap' }}>Help translate</span>
+                           Help translate
                         </Link>
                      </Stack>
                   </GridItem>

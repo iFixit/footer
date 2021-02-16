@@ -28,7 +28,7 @@
    "peerDependencies": {
       "@core-ds/primitives": ">=1",
       "react": ">=16",
-      "styled-components": ">=5"
+      "styled-components": ">=4"
    },
    "devDependencies": {
       "@axe-core/react": "4.1.0",
