@@ -80,7 +80,7 @@ export function useMenu({ id, defaultIsOpen = false }: MenuProps): MenuContext {
       menuButtonRef,
       menuRef,
       openAndFocusFirstItem,
-      openAndFocusFirstItem,
+      openAndFocusLastItem,
       isOpen,
       focusContext,
       close,
