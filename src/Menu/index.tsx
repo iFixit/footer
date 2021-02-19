@@ -92,7 +92,6 @@ export const MenuItem = styled(UnstyledMenuItem)`
    outline: none;
    transition: background-color 400ms;
    cursor: pointer;
-   transition: background-color 400ms;
    &[data-type='button'] {
       padding: ${space[2]} ${space[3]};
    }
