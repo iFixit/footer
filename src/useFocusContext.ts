@@ -21,7 +21,7 @@ export function useFocusContext<
 
    const register = React.useCallback((element: Element) => {
       setElements((currentElements) => {
-         const isAlreadyInserted = currentElements.some((el) => el === element);
+         const isAlreadyInserted = currentElements.includes(element);
          if (!isAlreadyInserted) {
             const index = currentElements.findIndex((el) => {
                return Boolean(
