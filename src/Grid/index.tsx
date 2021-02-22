@@ -18,8 +18,7 @@ const gridStyles = css`
       (key) => css`
          ${responsiveProperty(key, 'templateRows', 'grid-template-rows')};
          ${responsiveProperty(key, 'templateColumns', 'grid-template-columns')};
-         ${responsiveProperty(key, 'gap', 'row-gap')};
-         ${responsiveProperty(key, 'gap', 'column-gap')};
+         ${responsiveProperty(key, 'gap', 'gap')};
       `
    )}
 `;
