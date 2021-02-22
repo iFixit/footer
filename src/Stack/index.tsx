@@ -11,7 +11,6 @@ import {
 
 export type StackProps = React.PropsWithChildren<
    {
-      className?: string;
       direction?: Style<React.CSSProperties['flexDirection']>;
       spacing?: Style<string>;
       justify?: Style<React.CSSProperties['justifyContent']>;

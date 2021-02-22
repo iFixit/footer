@@ -1,4 +1,4 @@
-import { borderRadius, color, lineHeight, space } from '@core-ds/primitives';
+import { borderRadius, color, lineHeight, space, fontSize } from '@core-ds/primitives';
 import * as React from 'react';
 import styled from 'styled-components';
 import { LayoutProps } from '../types';
@@ -6,7 +6,6 @@ import { layout } from '../utils';
 
 export type LinkProps = React.PropsWithChildren<
    {
-      className?: string;
       url: string;
       prefix?: React.ReactNode;
       suffix?: React.ReactNode;
@@ -43,7 +42,7 @@ export const Link = styled(UnstyledLink)`
    align-items: center;
    text-decoration: none;
    color: ${color.gray3};
-   font-size: 14px;
+   font-size: ${fontSize[1]};
    line-height: ${lineHeight.normal};
    outline: none;
    border-radius: ${borderRadius.md};

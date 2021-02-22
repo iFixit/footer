@@ -10,7 +10,6 @@ export enum DividerOrientation {
 }
 
 export interface DividerProps {
-   className?: string;
    orientation?: DividerOrientation;
    display?: Style<React.CSSProperties['display']>;
 }
