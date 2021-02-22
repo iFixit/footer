@@ -7,15 +7,15 @@ import { StoreFlag } from './StoreFlag';
 export interface StoreMenuProps {
    className?: string;
    label: string;
-   initialCountryCode?: string;
+   initialStoreCode?: string;
    stores: Store[];
-   selectedCountryCode?: string;
+   selectedStoreCode?: string;
    onChange?: (store: Store) => void;
 }
 
 interface Store {
    name: string;
-   countryCode: string;
+   storeCode: string;
    currency: string;
    url?: string;
 }
@@ -23,21 +23,21 @@ interface Store {
 function UnstyledStoreMenu({
    className,
    label,
-   initialCountryCode,
+   initialStoreCode,
    stores,
-   selectedCountryCode,
+   selectedStoreCode,
    onChange,
 }: StoreMenuProps) {
-   const [internalCountryCode, setInternalCountryCode] = React.useState(initialCountryCode);
+   const [internalStoreCode, setInternalStoreCode] = React.useState(initialStoreCode);
 
-   const countryCode = React.useMemo(() => {
-      return selectedCountryCode || internalCountryCode;
-   }, [selectedCountryCode, internalCountryCode]);
+   const storeCode = React.useMemo(() => {
+      return selectedStoreCode || internalStoreCode;
+   }, [selectedStoreCode, internalStoreCode]);
 
    const handleClick = React.useCallback(
       (store: Store) => {
-         if (countryCode !== store.countryCode) {
-            setInternalCountryCode(store.countryCode);
+         if (storeCode !== store.storeCode) {
+            setInternalStoreCode(store.storeCode);
             onChange?.(store);
          }
       },
@@ -49,18 +49,18 @@ function UnstyledStoreMenu({
          <MenuButton>
             <Label>{label}</Label>
             <Tag>
-               <StoreFlag countryCode={countryCode} />
+               <StoreFlag storeCode={storeCode} />
             </Tag>
          </MenuButton>
          <MenuList>
             {stores.map((store) => (
                <StoreMenuItem
-                  key={store.countryCode}
+                  key={store.storeCode}
                   url={store.url}
                   onSelect={() => handleClick(store)}
                >
                   <span>
-                     <StoreFlag countryCode={store.countryCode} />
+                     <StoreFlag storeCode={store.storeCode} />
                      <StoreName>{store.name}</StoreName>
                   </span>
                   <Currency>{store.currency}</Currency>
