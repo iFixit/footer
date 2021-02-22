@@ -13,8 +13,7 @@ export type GridProps = {
 const gridStyles = css`
    ${baseProperty('templateRows', 'grid-template-rows')};
    ${baseProperty('templateColumns', 'grid-template-columns')};
-   ${baseProperty('gap', 'row-gap')};
-   ${baseProperty('gap', 'column-gap')};
+   ${baseProperty('gap', 'gap')};
    ${createResponsiveStyles(
       (key) => css`
          ${responsiveProperty(key, 'templateRows', 'grid-template-rows')};
