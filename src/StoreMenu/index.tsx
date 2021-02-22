@@ -30,9 +30,7 @@ function UnstyledStoreMenu({
 }: StoreMenuProps) {
    const [internalStoreCode, setInternalStoreCode] = React.useState(initialStoreCode);
 
-   const storeCode = React.useMemo(() => {
-      return selectedStoreCode || internalStoreCode;
-   }, [selectedStoreCode, internalStoreCode]);
+   const storeCode = selectedStoreCode || internalStoreCode;
 
    const handleClick = React.useCallback(
       (store: Store) => {
@@ -41,7 +39,7 @@ function UnstyledStoreMenu({
             onChange?.(store);
          }
       },
-      [onChange]
+      [onChange, storeCode]
    );
 
    return (

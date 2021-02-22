@@ -4,7 +4,6 @@ import { LayoutProps, Style } from '../types';
 import { createResponsiveStyles, baseProperty, layout, responsiveProperty } from '../utils';
 
 export type GridProps = {
-   className?: string;
    templateRows?: Style<React.CSSProperties['gridTemplateRows']>;
    templateColumns?: Style<React.CSSProperties['gridTemplateColumns']>;
    gap?: Style<string | number>;
@@ -23,16 +22,13 @@ const gridStyles = css`
    )}
 `;
 
-export const Grid = styled.div.withConfig({
-   shouldForwardProp: (prop, defaultValidator) => ![''].includes(prop) && defaultValidator(prop),
-})<GridProps>`
+export const Grid = styled.div<GridProps>`
    display: grid;
    ${layout};
    ${gridStyles};
 `;
 
 export type GridItemProps = {
-   className?: string;
    rowStart?: Style<React.CSSProperties['gridRowStart']>;
    rowEnd?: Style<React.CSSProperties['gridRowEnd']>;
    columnStart?: Style<React.CSSProperties['gridColumnStart']>;
