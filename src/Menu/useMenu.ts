@@ -103,9 +103,7 @@ export function useMenuList(props: MenuListProps): MenuListInternalProps {
          const eventKey = normalizeEventKey(event);
 
          const keyMap: { [key: string]: (event: React.KeyboardEvent) => void } = {
-            Tab: (event) => {
-               event.preventDefault();
-            },
+            Tab: () => {},
             Escape: close,
             ArrowDown: () => {
                focusContext.focusNext();
