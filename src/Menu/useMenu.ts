@@ -75,14 +75,14 @@ export function useMenu({ id, defaultIsOpen = false }: MenuProps): MenuContext {
          close,
       };
    }, [
+      isOpen,
+      focusContext,
       menuButtonId,
       menuId,
       menuButtonRef,
       menuRef,
       openAndFocusFirstItem,
       openAndFocusLastItem,
-      isOpen,
-      focusContext,
       close,
    ]);
 
