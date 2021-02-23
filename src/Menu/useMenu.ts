@@ -124,19 +124,16 @@ export function useMenuList(props: MenuListProps): MenuListInternalProps {
       [focusContext, close]
    );
 
-   const menuListProps = React.useMemo((): MenuListInternalProps => {
-      return {
-         ...props,
-         id: menuId,
-         role: 'menu',
-         'aria-orientation': 'vertical',
-         'data-active': isOpen,
-         tabIndex: -1,
-         ref: menuRef,
-         onKeyDown,
-      };
-   }, [props, menuRef, isOpen, onKeyDown]);
-   return menuListProps;
+   return {
+      ...props,
+      id: menuId,
+      role: 'menu',
+      'aria-orientation': 'vertical',
+      'data-active': isOpen,
+      tabIndex: -1,
+      ref: menuRef,
+      onKeyDown,
+   };
 }
 
 export type MenuItemProps = React.PropsWithChildren<{
@@ -159,7 +156,6 @@ export function useMenuItem({ onSelect, url, ...props }: MenuItemProps) {
       (event: React.KeyboardEvent) => {
          const eventKey = normalizeEventKey(event);
          if (eventKey === 'Enter' && url == null) {
-            // event.preventDefault();
             onSelect?.(event);
          }
       },
@@ -180,34 +176,19 @@ export function useMenuItem({ onSelect, url, ...props }: MenuItemProps) {
       focusContext.blur();
    }, [focusContext.blur]);
 
-   const menuItemProps = React.useMemo((): ElementProps<any> &
-      MenuItemProps & { 'data-focus': boolean; href?: string } => {
-      return {
-         ...props,
-         href: url,
-         'data-focus': isFocused,
-         role: 'menuitem',
-         ref: itemRef,
-         tabIndex: isFocused ? 0 : -1,
-         onMouseEnter,
-         onMouseMove,
-         onMouseLeave,
-         onKeyDown,
-         onClick: onSelect,
-      };
-   }, [
-      props,
-      itemRef,
-      isFocused,
+   return {
+      ...props,
+      href: url,
+      'data-focus': isFocused,
+      role: 'menuitem',
+      ref: itemRef,
+      tabIndex: isFocused ? 0 : -1,
       onMouseEnter,
       onMouseMove,
       onMouseLeave,
-      onSelect,
       onKeyDown,
-      url,
-   ]);
-
-   return menuItemProps;
+      onClick: onSelect,
+   };
 }
 
 export type MenuButtonProps = React.HTMLAttributes<HTMLButtonElement>;
@@ -259,21 +240,14 @@ export function useMenuButton(
       [openAndFocusFirstItem, openAndFocusLastItem]
    );
 
-   const buttonProps = React.useMemo((): React.DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-   > => {
-      return {
-         ...props,
-         id: menuButtonId,
-         'aria-haspopup': 'menu',
-         'aria-expanded': isOpen,
-         'aria-controls': menuId,
-         onClick,
-         onKeyDown,
-         ref: menuButtonRef,
-      };
-   }, [isOpen, onClick, onKeyDown, props]);
-
-   return buttonProps;
+   return {
+      ...props,
+      id: menuButtonId,
+      'aria-haspopup': 'menu',
+      'aria-expanded': isOpen,
+      'aria-controls': menuId,
+      onClick,
+      onKeyDown,
+      ref: menuButtonRef,
+   };
 }
