@@ -14,22 +14,22 @@ export type Style<Property extends keyof CSSProperties> =
 
 export interface LayoutProps {
    margin?: Style<'margin'>;
-   marginX?: Style<'margin'>;
-   marginY?: Style<'margin'>;
+   marginX?: Style<'marginLeft'>;
+   marginY?: Style<'marginTop'>;
    marginTop?: Style<'marginTop'>;
    marginBottom?: Style<'marginBottom'>;
    marginLeft?: Style<'marginLeft'>;
    marginRight?: Style<'marginRight'>;
    padding?: Style<'padding'>;
-   paddingX?: Style<'padding'>;
-   paddingY?: Style<'padding'>;
+   paddingX?: Style<'paddingLeft'>;
+   paddingY?: Style<'paddingTop'>;
    paddingTop?: Style<'paddingTop'>;
    paddingBottom?: Style<'paddingBottom'>;
    paddingLeft?: Style<'paddingLeft'>;
    paddingRight?: Style<'paddingRight'>;
    border?: Style<'border'>;
-   borderX?: Style<'border'>;
-   borderY?: Style<'border'>;
+   borderX?: Style<'borderLeft'>;
+   borderY?: Style<'borderTop'>;
    borderTop?: Style<'borderTop'>;
    borderBottom?: Style<'borderBottom'>;
    borderLeft?: Style<'borderLeft'>;
