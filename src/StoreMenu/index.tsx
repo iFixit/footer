@@ -20,7 +20,7 @@ interface Store {
    url?: string;
 }
 
-function UnstyledStoreMenu({
+export function StoreMenu({
    className,
    label,
    initialStoreCode,
@@ -100,5 +100,3 @@ const StoreMenuItem = styled(MenuItem)`
       align-items: center;
    }
 `;
-
-export const StoreMenu = styled(UnstyledStoreMenu)``;
