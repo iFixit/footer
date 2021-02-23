@@ -1,4 +1,4 @@
-import { borderRadius, color, space } from '@core-ds/primitives';
+import { borderRadius, color, fontSize, space } from '@core-ds/primitives';
 import * as React from 'react';
 import styled from 'styled-components';
 import {
@@ -39,14 +39,14 @@ export const MenuButton = styled(UnstyledMenuButton)`
    background: none;
    border: none;
    color: ${color.white};
-   font-size: 14px;
+   font-size: ${fontSize[1]};
    cursor: pointer;
    outline: none;
    border-radius: ${borderRadius.md};
    font-family: inherit;
    padding: 0;
    &:focus {
-      box-shadow: 0 0 0 0.2rem rgb(25 117 241 / 25%);
+      box-shadow: 0 0 0 3px rgb(25 117 241 / 25%);
    }
 `;
 
@@ -81,6 +81,7 @@ function UnstyledMenuItem(props: MenuItemProps) {
       const { className, ...otherProps } = itemProps;
       return (
          <li className={className} role="none" data-type="link">
+            {/* @ts-ignore */}
             <a {...otherProps} />
          </li>
       );

@@ -47,7 +47,7 @@ export const Link = styled(UnstyledLink)`
    outline: none;
    border-radius: ${borderRadius.md};
    &:focus {
-      box-shadow: 0 0 0 0.2rem rgb(25 117 241 / 25%);
+      box-shadow: 0 0 0 3px rgb(25 117 241 / 25%);
    }
    &:hover {
       color: ${color.gray1};

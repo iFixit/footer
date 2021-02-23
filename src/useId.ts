@@ -13,11 +13,12 @@ const generateId = () => ++id;
 export function useId(providedId?: string, prefix?: string): string | undefined {
    const [id, setId] = React.useState(providedId || (isFirstAppRender ? null : generateId()));
 
-   React.useLayoutEffect(() => {
+   React.useEffect(() => {
       if (id == null) {
          setId(generateId());
       }
-   }, [id]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    React.useEffect(() => {
       if (isFirstAppRender) {
