@@ -109,16 +109,17 @@ export function useFocusItem<Element extends HTMLElement>({
    const isFocused = index >= 0 && index === focusedIndex;
 
    React.useEffect(() => {
-      if (ref.current) {
-         register(ref.current);
+      const item = ref.current;
+      if (item) {
+         register(item);
          return () => {
-            if (ref.current) {
-               unregister(ref.current);
+            if (item) {
+               unregister(item);
             }
          };
       }
       return;
-   }, [register, unregister, ref.current]);
+   }, [register, unregister, ref]);
 
    React.useEffect(() => {
       if (isMenuOpen && isFocused && document.activeElement !== ref.current) {

@@ -17,7 +17,7 @@ export function useId(providedId?: string, prefix?: string): string | undefined 
       if (id == null) {
          setId(generateId());
       }
-   }, []);
+   }, [id]);
 
    React.useEffect(() => {
       if (isFirstAppRender) {

@@ -21,6 +21,7 @@
       "storybook": "start-storybook -p 6006 -h localhost",
       "build-storybook": "build-storybook",
       "format": "prettier --write .",
+      "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
       "analyze-bundle": "source-map-explorer dist/footer.js",
       "chromatic": "npx chromatic",
       "transform-svg": "npx @svgr/cli -d src/svg src/svg/assets --typescript"
@@ -44,9 +45,14 @@
       "@types/node": "14.14.22",
       "@types/react": "17.0.0",
       "@types/styled-components": "5.1.7",
+      "@typescript-eslint/eslint-plugin": "4.15.2",
+      "@typescript-eslint/parser": "4.15.2",
       "babel-loader": "8.2.2",
       "chromatic": "5.6.1",
       "core-js": "3.8.3",
+      "eslint": "7.20.0",
+      "eslint-config-prettier": "8.0.0",
+      "eslint-plugin-react-hooks": "4.2.0",
       "husky": "4.3.8",
       "lint-staged": "10.5.3",
       "microbundle": "0.13.0",
@@ -63,7 +69,8 @@
       }
    },
    "lint-staged": {
-      "*.{js,ts,tsx,css,md,mdx}": "prettier --write"
+      "*.{js,ts,tsx,css,md,mdx}": "prettier --write",
+      "*.{js,ts,tsx}": "npm run lint"
    },
    "dependencies": {}
 }

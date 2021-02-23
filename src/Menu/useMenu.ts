@@ -103,6 +103,7 @@ export function useMenuList(props: MenuListProps): MenuListInternalProps {
          const eventKey = normalizeEventKey(event);
 
          const keyMap: { [key: string]: (event: React.KeyboardEvent) => void } = {
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             Tab: () => {},
             Escape: close,
             ArrowDown: () => {
@@ -145,6 +146,7 @@ export type MenuItemProps = React.PropsWithChildren<{
 export function useMenuItem({ onSelect, url, ...props }: MenuItemProps) {
    const { isOpen, focusContext } = useMenuContext();
    const itemRef = React.useRef<any>(null);
+   const { focus, blur } = focusContext;
 
    const { isFocused, index } = useFocusItem({
       isMenuOpen: isOpen,
@@ -163,18 +165,18 @@ export function useMenuItem({ onSelect, url, ...props }: MenuItemProps) {
    );
 
    const onMouseEnter = React.useCallback(() => {
-      focusContext.focus(index);
-   }, [focusContext.focus, itemRef, index]);
+      focus(index);
+   }, [focus, index]);
 
    const onMouseMove = React.useCallback(() => {
       if (document.activeElement !== itemRef.current) {
-         focusContext.focus(index);
+         focus(index);
       }
-   }, [focusContext.focus, itemRef, index]);
+   }, [focus, itemRef, index]);
 
    const onMouseLeave = React.useCallback(() => {
-      focusContext.blur();
-   }, [focusContext.blur]);
+      blur();
+   }, [blur]);
 
    return {
       ...props,
