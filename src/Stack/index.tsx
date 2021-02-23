@@ -12,14 +12,15 @@ import {
 
 export type StackProps = React.PropsWithChildren<
    {
-      direction?: Style<React.CSSProperties['flexDirection']>;
-      spacing?: Style<string>;
-      justify?: Style<React.CSSProperties['justifyContent']>;
-      align?: Style<React.CSSProperties['alignItems']>;
+      direction?: Style<'flexDirection'>;
+      spacing?: Style<'margin'>;
+      justify?: Style<'justifyContent'>;
+      align?: Style<'alignItems'>;
    } & LayoutProps
 >;
 
 const stackStyles = css<StackProps>`
+   display: flex;
    ${baseProperty('direction', 'flex-direction')};
    ${baseProperty('justify', 'justify-content')};
    ${baseProperty('align', 'align-items')};
@@ -74,7 +75,6 @@ export const Stack = styled.div.withConfig({
    shouldForwardProp: (prop, defaultValidator) =>
       !['spacing', 'direction', 'justify', 'align'].includes(prop) && defaultValidator(prop),
 })<StackProps>`
-   display: flex;
    ${layout}
    ${stackStyles}
 `;

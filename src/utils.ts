@@ -1,14 +1,17 @@
 import { breakpoint } from '@core-ds/primitives';
+import { CSSProperties } from 'react';
 import { css } from 'styled-components';
 import { Breakpoint, EventKeys, ResponsiveStyle, Style } from './types';
 
 const breakpointKeys: Array<keyof Breakpoint> = Object.keys(breakpoint) as any;
 
-export function isResponsiveStyle<Value>(x?: Style<Value>): x is ResponsiveStyle<Value> {
+export function isResponsiveStyle<Value extends keyof CSSProperties>(
+   x?: Style<Value>
+): x is ResponsiveStyle<Value> {
    return x != null && typeof x !== 'string';
 }
 
-export function baseStyle<Value = any>(style: Style<Value>) {
+export function baseStyle<Value extends keyof CSSProperties>(style: Style<Value>) {
    return isResponsiveStyle(style) ? style.base : style;
 }
 

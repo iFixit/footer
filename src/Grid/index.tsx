@@ -1,12 +1,11 @@
-import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { LayoutProps, Style } from '../types';
-import { createResponsiveStyles, baseProperty, layout, responsiveProperty } from '../utils';
+import { baseProperty, createResponsiveStyles, layout, responsiveProperty } from '../utils';
 
 export type GridProps = {
-   templateRows?: Style<React.CSSProperties['gridTemplateRows']>;
-   templateColumns?: Style<React.CSSProperties['gridTemplateColumns']>;
-   gap?: Style<string | number>;
+   templateRows?: Style<'gridTemplateRows'>;
+   templateColumns?: Style<'gridTemplateColumns'>;
+   gap?: Style<'gap'>;
 } & LayoutProps;
 
 const gridStyles = css`
@@ -29,11 +28,11 @@ export const Grid = styled.div<GridProps>`
 `;
 
 export type GridItemProps = {
-   rowStart?: Style<React.CSSProperties['gridRowStart']>;
-   rowEnd?: Style<React.CSSProperties['gridRowEnd']>;
-   columnStart?: Style<React.CSSProperties['gridColumnStart']>;
-   columnEnd?: Style<React.CSSProperties['gridColumnEnd']>;
-   justify?: Style<React.CSSProperties['justifySelf']>;
+   rowStart?: Style<'gridRowStart'>;
+   rowEnd?: Style<'gridRowEnd'>;
+   columnStart?: Style<'gridColumnStart'>;
+   columnEnd?: Style<'gridColumnEnd'>;
+   justify?: Style<'justifySelf'>;
 } & LayoutProps;
 
 const gridItemStyles = css`

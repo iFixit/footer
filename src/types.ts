@@ -3,34 +3,37 @@ import { breakpoint } from '@core-ds/primitives';
 
 export type Breakpoint = typeof breakpoint;
 
-export type ResponsiveStyle<Value> = {
-   [B in keyof Breakpoint]: Value;
-} & { base?: Value };
+export type ResponsiveStyle<Property extends keyof CSSProperties> = {
+   [B in keyof Breakpoint]: CSSProperties[Property];
+} & { base?: Property };
 
-export type Style<Value> = ResponsiveStyle<Value> | Value;
+// export type Style<Value> = ResponsiveStyle<Value> | Value;
+export type Style<Property extends keyof CSSProperties> =
+   | ResponsiveStyle<Property>
+   | CSSProperties[Property];
 
 export interface LayoutProps {
-   margin?: Style<CSSProperties['margin']>;
-   marginX?: Style<CSSProperties['margin']>;
-   marginY?: Style<CSSProperties['margin']>;
-   marginTop?: Style<CSSProperties['marginTop']>;
-   marginBottom?: Style<CSSProperties['marginBottom']>;
-   marginLeft?: Style<CSSProperties['marginLeft']>;
-   marginRight?: Style<CSSProperties['marginRight']>;
-   padding?: Style<CSSProperties['padding']>;
-   paddingX?: Style<CSSProperties['padding']>;
-   paddingY?: Style<CSSProperties['padding']>;
-   paddingTop?: Style<CSSProperties['paddingTop']>;
-   paddingBottom?: Style<CSSProperties['paddingBottom']>;
-   paddingLeft?: Style<CSSProperties['paddingLeft']>;
-   paddingRight?: Style<CSSProperties['paddingRight']>;
-   border?: Style<CSSProperties['border']>;
-   borderX?: Style<CSSProperties['border']>;
-   borderY?: Style<CSSProperties['border']>;
-   borderTop?: Style<CSSProperties['borderTop']>;
-   borderBottom?: Style<CSSProperties['borderBottom']>;
-   borderLeft?: Style<CSSProperties['borderLeft']>;
-   borderRight?: Style<CSSProperties['borderRight']>;
+   margin?: Style<'margin'>;
+   marginX?: Style<'margin'>;
+   marginY?: Style<'margin'>;
+   marginTop?: Style<'marginTop'>;
+   marginBottom?: Style<'marginBottom'>;
+   marginLeft?: Style<'marginLeft'>;
+   marginRight?: Style<'marginRight'>;
+   padding?: Style<'padding'>;
+   paddingX?: Style<'padding'>;
+   paddingY?: Style<'padding'>;
+   paddingTop?: Style<'paddingTop'>;
+   paddingBottom?: Style<'paddingBottom'>;
+   paddingLeft?: Style<'paddingLeft'>;
+   paddingRight?: Style<'paddingRight'>;
+   border?: Style<'border'>;
+   borderX?: Style<'border'>;
+   borderY?: Style<'border'>;
+   borderTop?: Style<'borderTop'>;
+   borderBottom?: Style<'borderBottom'>;
+   borderLeft?: Style<'borderLeft'>;
+   borderRight?: Style<'borderRight'>;
 }
 
 export type EventKeys =

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { color } from '@core-ds/primitives';
 import styled, { css } from 'styled-components';
 import { Style } from '../types';
@@ -11,7 +10,7 @@ export enum DividerOrientation {
 
 export interface DividerProps {
    orientation?: DividerOrientation;
-   display?: Style<React.CSSProperties['display']>;
+   display?: Style<'display'>;
 }
 
 export const Divider = styled.hr.attrs<DividerProps>((props) => ({
