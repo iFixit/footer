@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { LayoutProps, Style } from '../types';
 import {
    baseProperty,
+   baseStyle,
    createResponsiveStyles,
    isResponsiveStyle,
    layout,
@@ -23,23 +24,24 @@ const stackStyles = css<StackProps>`
    ${baseProperty('justify', 'justify-content')};
    ${baseProperty('align', 'align-items')};
    ${baseProperty('wrap', 'flex-wrap')};
-   ${(props) =>
-      isResponsiveStyle(props.spacing) && props.spacing.base
+   ${(props) => {
+      const baseSpacing = baseStyle(props.spacing);
+      return baseSpacing != null
          ? css`
               & > :not(:first-child) {
-                 ${props.direction === 'column' ||
-                 (isResponsiveStyle(props.direction) && props.direction?.base === 'column')
-                    ? `margin-top: ${props.spacing.base}; margin-left: unset;`
-                    : `margin-left: ${props.spacing.base}; margin-top: unset;`}
+                 ${baseStyle(props.direction) === 'column'
+                    ? css`
+                         margin-top: ${baseSpacing};
+                         margin-left: unset;
+                      `
+                    : css`
+                         margin-left: ${baseSpacing};
+                         margin-top: unset;
+                      `}
               }
            `
-         : props.spacing == null
-         ? null
-         : css`
-              & > :not(:first-child) {
-                 margin-left: ${props.spacing};
-              }
-           `};
+         : null;
+   }};
    ${createResponsiveStyles(
       (key) => css<StackProps>`
          ${responsiveProperty(key, 'direction', 'flex-direction')};
@@ -54,8 +56,14 @@ const stackStyles = css<StackProps>`
                   margin-left: ${props.spacing[key]};
                   ${props.direction === 'column' ||
                   (isResponsiveStyle(props.direction) && props.direction?.[key] === 'column')
-                     ? `margin-top: ${props.spacing[key]}; margin-left: unset;`
-                     : `margin-left: ${props.spacing[key]}; margin-top: unset;`}
+                     ? css`
+                          margin-top: ${props.spacing[key]};
+                          margin-left: unset;
+                       `
+                     : css`
+                          margin-left: ${props.spacing[key]};
+                          margin-top: unset;
+                       `}
                }
             `};
       `

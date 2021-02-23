@@ -8,6 +8,10 @@ export function isResponsiveStyle<Value>(x?: Style<Value>): x is ResponsiveStyle
    return x != null && typeof x !== 'string';
 }
 
+export function baseStyle<Value = any>(style: Style<Value>) {
+   return isResponsiveStyle(style) ? style.base : style;
+}
+
 export const responsiveProperty = (breakpointKey: string, name: string, propertyName: string) =>
    css<any>`
       ${(props) =>
