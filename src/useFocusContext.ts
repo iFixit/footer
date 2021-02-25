@@ -23,6 +23,7 @@ export function useFocusContext<
       setElements((currentElements) => {
          const isAlreadyInserted = currentElements.includes(element);
          if (!isAlreadyInserted) {
+            // We make sure that elements are registered in the same order as they appear in the DOM
             const index = currentElements.findIndex((el) => {
                return Boolean(
                   el.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_PRECEDING
