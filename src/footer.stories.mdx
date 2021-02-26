@@ -1,0 +1,143 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { Footer } from './Footer';
+import { Divider, DividerOrientation } from './Divider';
+import { Link } from './Link';
+import { Stack } from './Stack';
+import { Grid, GridItem } from './Grid';
+import { FooterPartner } from './FooterPartner';
+import { FooterList, FooterListItem } from './FooterList';
+import { StoreMenu } from './StoreMenu';
+import styled from 'styled-components';
+import { fontFamily, fontWeight, space, color, borderRadius } from '@core-ds/primitives';
+import stores from './stores.json';
+import links from './links.json';
+import partners from './partners.json';
+import { Globe, FacebookLogo, InstagramLogo, TwitterLogo, YoutubeLogo, RepairOrgLogo } from './svg';
+
+<Meta title="Footer" />
+
+export const DemoPage = styled.div`
+   display: flex;
+   flex-direction: column;
+   font-family: ${fontFamily.inter};
+   margin-top: 100px;
+`;
+
+# iFixit footer
+
+A set of components to compose iFixit.com and Shopify store footer.
+
+<Canvas>
+   <Story name="Default footer">
+      {(args) => (
+         <DemoPage>
+            <Footer>
+               <Grid
+                  templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)', lg: 'repeat(4, 1fr)' }}
+                  gap={space[4]}
+                  paddingX={{
+                     base: space[5],
+                     sm: space[7],
+                  }}
+                  paddingY={space[7]}
+               >
+                  {links.map((list, index) => (
+                     <FooterList key={index}>
+                        {list.map((link, linkIndex) => (
+                           <FooterListItem key={linkIndex}>
+                              <Link href={link.url} fontWeight={fontWeight.bold}>
+                                 {link.label}
+                              </Link>
+                           </FooterListItem>
+                        ))}
+                     </FooterList>
+                  ))}
+                  <FooterList>
+                     <FooterListItem>
+                        <Link href="#" prefix={<FacebookLogo />}>
+                           Facebook
+                        </Link>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <Link href="#" prefix={<TwitterLogo />}>
+                           Twitter
+                        </Link>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <Link href="#" prefix={<InstagramLogo />}>
+                           Instagram
+                        </Link>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <Link href="#" prefix={<YoutubeLogo />}>
+                           Youtube
+                        </Link>
+                     </FooterListItem>
+                     <FooterListItem>
+                        <Link href="#" prefix={<RepairOrgLogo />}>
+                           Repair.org
+                        </Link>
+                     </FooterListItem>
+                  </FooterList>
+                  <GridItem
+                     columnEnd={{ sm: 'span 3', lg: 'auto' }}
+                     marginTop={{ base: space[6], lg: 'unset' }}
+                     justify="center"
+                  >
+                     <Grid templateColumns="repeat(3, 1fr)" gap={space[4]}>
+                        {partners.map((partner, partnerIndex) => (
+                           <Link href="#" key={partnerIndex}>
+                              <FooterPartner alt={partner.name} source={partner.logo} />
+                           </Link>
+                        ))}
+                     </Grid>
+                  </GridItem>
+               </Grid>
+               <Divider />
+               <Grid
+                  templateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
+                  gap={space[4]}
+                  paddingX={{ base: space[5], sm: space[7] }}
+                  paddingY={space[5]}
+               >
+                  <GridItem justify={{ base: 'start', sm: 'center', lg: 'start' }}>
+                     <Stack
+                        direction={{ base: 'column', sm: 'row' }}
+                        spacing={{ base: space[2], sm: space[8] }}
+                     >
+                        <StoreMenu
+                           initialStoreCode="US"
+                           label="Region"
+                           onChange={(store) => console.log('Clicked', store.name)}
+                           stores={stores}
+                        />
+                        <Link href="#" suffix={<Globe />}>
+                           Help translate
+                        </Link>
+                     </Stack>
+                  </GridItem>
+                  <GridItem justify={{ base: 'start', sm: 'center', lg: 'end' }} align="center">
+                     <Stack
+                        align="stretch"
+                        direction={{ base: 'column', sm: 'row' }}
+                        spacing={{ base: space[2], sm: space[4] }}
+                     >
+                        <Link href="#">Licensed under Creative Commons</Link>
+                        <Divider
+                           orientation={DividerOrientation.Vertical}
+                           display={{ base: 'none', sm: 'block' }}
+                        />
+                        <Link href="#">Privacy</Link>
+                        <Divider
+                           orientation={DividerOrientation.Vertical}
+                           display={{ base: 'none', sm: 'block' }}
+                        />
+                        <Link href="#">Legal</Link>
+                     </Stack>
+                  </GridItem>
+               </Grid>
+            </Footer>
+         </DemoPage>
+      )}
+   </Story>
+</Canvas>
