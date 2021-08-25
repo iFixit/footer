@@ -9,7 +9,7 @@
    "license": "UNLICENSED",
    "main": "dist/footer.js",
    "typings": "dist/index.d.ts",
-   "exports": "dist/footer.modern.js",
+   "exports": "./dist/footer.modern.js",
    "module": "dist/footer.module.js",
    "unpkg": "dist/footer.umd.js",
    "files": [
