@@ -16,7 +16,7 @@
       "dist"
    ],
    "scripts": {
-      "build": "microbundle --jsx React.createElement",
+      "prepare": "microbundle --jsx React.createElement",
       "dev": "microbundle watch",
       "storybook": "start-storybook -p 6006 -h localhost",
       "build-storybook": "build-storybook",
